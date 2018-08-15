@@ -39,147 +39,142 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <yara/stopwatch.h>
 #include <yara/threading.h>
 
-
 #define DECLARE_REFERENCE(type, name) \
-    union { type name; int64_t name##_; } YR_ALIGN(8)
+  union {                             \
+    type name;                        \
+    int64_t name##_;                  \
+  } YR_ALIGN(8)
 
+#define NAMESPACE_TFLAGS_UNSATISFIED_GLOBAL 0x01
 
-
-#define NAMESPACE_TFLAGS_UNSATISFIED_GLOBAL      0x01
-
-
-#define STRING_GFLAGS_REFERENCED        0x01
-#define STRING_GFLAGS_HEXADECIMAL       0x02
-#define STRING_GFLAGS_NO_CASE           0x04
-#define STRING_GFLAGS_ASCII             0x08
-#define STRING_GFLAGS_WIDE              0x10
-#define STRING_GFLAGS_REGEXP            0x20
-#define STRING_GFLAGS_FAST_REGEXP       0x40
-#define STRING_GFLAGS_FULL_WORD         0x80
-#define STRING_GFLAGS_ANONYMOUS         0x100
-#define STRING_GFLAGS_SINGLE_MATCH      0x200
-#define STRING_GFLAGS_LITERAL           0x400
-#define STRING_GFLAGS_FITS_IN_ATOM      0x800
-#define STRING_GFLAGS_NULL              0x1000
-#define STRING_GFLAGS_CHAIN_PART        0x2000
-#define STRING_GFLAGS_CHAIN_TAIL        0x4000
-#define STRING_GFLAGS_FIXED_OFFSET      0x8000
-#define STRING_GFLAGS_GREEDY_REGEXP     0x10000
-#define STRING_GFLAGS_DOT_ALL           0x20000
-#define STRING_GFLAGS_DISABLED          0x40000
-#define STRING_GFLAGS_XOR               0x80000
+#define STRING_GFLAGS_REFERENCED 0x01
+#define STRING_GFLAGS_HEXADECIMAL 0x02
+#define STRING_GFLAGS_NO_CASE 0x04
+#define STRING_GFLAGS_ASCII 0x08
+#define STRING_GFLAGS_WIDE 0x10
+#define STRING_GFLAGS_REGEXP 0x20
+#define STRING_GFLAGS_FAST_REGEXP 0x40
+#define STRING_GFLAGS_FULL_WORD 0x80
+#define STRING_GFLAGS_ANONYMOUS 0x100
+#define STRING_GFLAGS_SINGLE_MATCH 0x200
+#define STRING_GFLAGS_LITERAL 0x400
+#define STRING_GFLAGS_FITS_IN_ATOM 0x800
+#define STRING_GFLAGS_NULL 0x1000
+#define STRING_GFLAGS_CHAIN_PART 0x2000
+#define STRING_GFLAGS_CHAIN_TAIL 0x4000
+#define STRING_GFLAGS_FIXED_OFFSET 0x8000
+#define STRING_GFLAGS_GREEDY_REGEXP 0x10000
+#define STRING_GFLAGS_DOT_ALL 0x20000
+#define STRING_GFLAGS_DISABLED 0x40000
+#define STRING_GFLAGS_XOR 0x80000
 
 #define STRING_IS_HEX(x) \
-    (((x)->g_flags) & STRING_GFLAGS_HEXADECIMAL)
+  (((x)->g_flags) & STRING_GFLAGS_HEXADECIMAL)
 
 #define STRING_IS_NO_CASE(x) \
-    (((x)->g_flags) & STRING_GFLAGS_NO_CASE)
+  (((x)->g_flags) & STRING_GFLAGS_NO_CASE)
 
 #define STRING_IS_DOT_ALL(x) \
-    (((x)->g_flags) & STRING_GFLAGS_DOT_ALL)
+  (((x)->g_flags) & STRING_GFLAGS_DOT_ALL)
 
 #define STRING_IS_ASCII(x) \
-    (((x)->g_flags) & STRING_GFLAGS_ASCII)
+  (((x)->g_flags) & STRING_GFLAGS_ASCII)
 
 #define STRING_IS_WIDE(x) \
-    (((x)->g_flags) & STRING_GFLAGS_WIDE)
+  (((x)->g_flags) & STRING_GFLAGS_WIDE)
 
 #define STRING_IS_REGEXP(x) \
-    (((x)->g_flags) & STRING_GFLAGS_REGEXP)
+  (((x)->g_flags) & STRING_GFLAGS_REGEXP)
 
 #define STRING_IS_GREEDY_REGEXP(x) \
-    (((x)->g_flags) & STRING_GFLAGS_GREEDY_REGEXP)
+  (((x)->g_flags) & STRING_GFLAGS_GREEDY_REGEXP)
 
 #define STRING_IS_FULL_WORD(x) \
-    (((x)->g_flags) & STRING_GFLAGS_FULL_WORD)
+  (((x)->g_flags) & STRING_GFLAGS_FULL_WORD)
 
 #define STRING_IS_ANONYMOUS(x) \
-    (((x)->g_flags) & STRING_GFLAGS_ANONYMOUS)
+  (((x)->g_flags) & STRING_GFLAGS_ANONYMOUS)
 
 #define STRING_IS_REFERENCED(x) \
-    (((x)->g_flags) & STRING_GFLAGS_REFERENCED)
+  (((x)->g_flags) & STRING_GFLAGS_REFERENCED)
 
 #define STRING_IS_SINGLE_MATCH(x) \
-    (((x)->g_flags) & STRING_GFLAGS_SINGLE_MATCH)
+  (((x)->g_flags) & STRING_GFLAGS_SINGLE_MATCH)
 
 #define STRING_IS_FIXED_OFFSET(x) \
-    (((x)->g_flags) & STRING_GFLAGS_FIXED_OFFSET)
+  (((x)->g_flags) & STRING_GFLAGS_FIXED_OFFSET)
 
 #define STRING_IS_LITERAL(x) \
-    (((x)->g_flags) & STRING_GFLAGS_LITERAL)
+  (((x)->g_flags) & STRING_GFLAGS_LITERAL)
 
 #define STRING_IS_FAST_REGEXP(x) \
-    (((x)->g_flags) & STRING_GFLAGS_FAST_REGEXP)
+  (((x)->g_flags) & STRING_GFLAGS_FAST_REGEXP)
 
 #define STRING_IS_CHAIN_PART(x) \
-    (((x)->g_flags) & STRING_GFLAGS_CHAIN_PART)
+  (((x)->g_flags) & STRING_GFLAGS_CHAIN_PART)
 
 #define STRING_IS_CHAIN_TAIL(x) \
-    (((x)->g_flags) & STRING_GFLAGS_CHAIN_TAIL)
+  (((x)->g_flags) & STRING_GFLAGS_CHAIN_TAIL)
 
 #define STRING_IS_NULL(x) \
-    ((x) == NULL || ((x)->g_flags) & STRING_GFLAGS_NULL)
+  ((x) == NULL || ((x)->g_flags) & STRING_GFLAGS_NULL)
 
 #define STRING_FITS_IN_ATOM(x) \
-    (((x)->g_flags) & STRING_GFLAGS_FITS_IN_ATOM)
+  (((x)->g_flags) & STRING_GFLAGS_FITS_IN_ATOM)
 
 #define STRING_IS_DISABLED(x) \
-    (((x)->g_flags) & STRING_GFLAGS_DISABLED)
+  (((x)->g_flags) & STRING_GFLAGS_DISABLED)
 
 #define STRING_IS_XOR(x) \
-    (((x)->g_flags) & STRING_GFLAGS_XOR)
+  (((x)->g_flags) & STRING_GFLAGS_XOR)
 
 #define STRING_FOUND(x) \
-    ((x)->matches[yr_get_tidx()].tail != NULL)
+  ((x)->matches[yr_get_tidx()].tail != NULL)
 
 #define STRING_MATCHES(x) \
-    ((x)->matches[yr_get_tidx()])
+  ((x)->matches[yr_get_tidx()])
 
+#define RULE_TFLAGS_MATCH 0x01
 
-#define RULE_TFLAGS_MATCH                0x01
-
-#define RULE_GFLAGS_PRIVATE              0x01
-#define RULE_GFLAGS_GLOBAL               0x02
-#define RULE_GFLAGS_REQUIRE_EXECUTABLE   0x04
-#define RULE_GFLAGS_REQUIRE_FILE         0x08
-#define RULE_GFLAGS_NULL                 0x1000
-#define RULE_GFLAGS_DISABLED             0x2000
+#define RULE_GFLAGS_PRIVATE 0x01
+#define RULE_GFLAGS_GLOBAL 0x02
+#define RULE_GFLAGS_REQUIRE_EXECUTABLE 0x04
+#define RULE_GFLAGS_REQUIRE_FILE 0x08
+#define RULE_GFLAGS_NULL 0x1000
+#define RULE_GFLAGS_DISABLED 0x2000
 
 #define RULE_IS_PRIVATE(x) \
-    (((x)->g_flags) & RULE_GFLAGS_PRIVATE)
+  (((x)->g_flags) & RULE_GFLAGS_PRIVATE)
 
 #define RULE_IS_GLOBAL(x) \
-    (((x)->g_flags) & RULE_GFLAGS_GLOBAL)
+  (((x)->g_flags) & RULE_GFLAGS_GLOBAL)
 
 #define RULE_IS_NULL(x) \
-    (((x)->g_flags) & RULE_GFLAGS_NULL)
+  (((x)->g_flags) & RULE_GFLAGS_NULL)
 
 #define RULE_IS_DISABLED(x) \
-    (((x)->g_flags) & RULE_GFLAGS_DISABLED)
+  (((x)->g_flags) & RULE_GFLAGS_DISABLED)
 
 #define RULE_MATCHES(x) \
-    ((x)->t_flags[yr_get_tidx()] & RULE_TFLAGS_MATCH)
+  ((x)->t_flags[yr_get_tidx()] & RULE_TFLAGS_MATCH)
 
-
-#define META_TYPE_NULL      0
-#define META_TYPE_INTEGER   1
-#define META_TYPE_STRING    2
-#define META_TYPE_BOOLEAN   3
+#define META_TYPE_NULL 0
+#define META_TYPE_INTEGER 1
+#define META_TYPE_STRING 2
+#define META_TYPE_BOOLEAN 3
 
 #define META_IS_NULL(x) \
-    ((x) != NULL ? (x)->type == META_TYPE_NULL : true)
+  ((x) != NULL ? (x)->type == META_TYPE_NULL : true)
 
-
-#define EXTERNAL_VARIABLE_TYPE_NULL           0
-#define EXTERNAL_VARIABLE_TYPE_FLOAT          1
-#define EXTERNAL_VARIABLE_TYPE_INTEGER        2
-#define EXTERNAL_VARIABLE_TYPE_BOOLEAN        3
-#define EXTERNAL_VARIABLE_TYPE_STRING         4
-#define EXTERNAL_VARIABLE_TYPE_MALLOC_STRING  5
+#define EXTERNAL_VARIABLE_TYPE_NULL 0
+#define EXTERNAL_VARIABLE_TYPE_FLOAT 1
+#define EXTERNAL_VARIABLE_TYPE_INTEGER 2
+#define EXTERNAL_VARIABLE_TYPE_BOOLEAN 3
+#define EXTERNAL_VARIABLE_TYPE_STRING 4
+#define EXTERNAL_VARIABLE_TYPE_MALLOC_STRING 5
 
 #define EXTERNAL_VARIABLE_IS_NULL(x) \
-    ((x) != NULL ? (x)->type == EXTERNAL_VARIABLE_TYPE_NULL : true)
-
+  ((x) != NULL ? (x)->type == EXTERNAL_VARIABLE_TYPE_NULL : true)
 
 typedef struct RE RE;
 typedef struct RE_AST RE_AST;
@@ -225,46 +220,42 @@ typedef struct YR_MODULE_IMPORT YR_MODULE_IMPORT;
 typedef struct YR_MEMORY_BLOCK YR_MEMORY_BLOCK;
 typedef struct YR_MEMORY_BLOCK_ITERATOR YR_MEMORY_BLOCK_ITERATOR;
 
-
 #pragma pack(push)
 #pragma pack(8)
 
-
 struct YR_NAMESPACE
 {
-  int32_t t_flags[YR_MAX_THREADS];     // Thread-specific flags
-  DECLARE_REFERENCE(char*, name);
+  int32_t t_flags[YR_MAX_THREADS]; // Thread-specific flags
+  DECLARE_REFERENCE(char *, name);
 };
-
 
 struct YR_META
 {
   int32_t type;
-  YR_ALIGN(8) int64_t integer;
+  YR_ALIGN(8)
+  int64_t integer;
 
-  DECLARE_REFERENCE(const char*, identifier);
-  DECLARE_REFERENCE(char*, string);
+  DECLARE_REFERENCE(const char *, identifier);
+  DECLARE_REFERENCE(char *, string);
 };
-
 
 struct YR_MATCHES
 {
   int32_t count;
 
-  DECLARE_REFERENCE(YR_MATCH*, head);
-  DECLARE_REFERENCE(YR_MATCH*, tail);
+  DECLARE_REFERENCE(YR_MATCH *, head);
+  DECLARE_REFERENCE(YR_MATCH *, tail);
 };
-
 
 struct YR_STRING
 {
   int32_t g_flags;
   int32_t length;
 
-  DECLARE_REFERENCE(char*, identifier);
-  DECLARE_REFERENCE(uint8_t*, string);
-  DECLARE_REFERENCE(YR_STRING*, chained_to);
-  DECLARE_REFERENCE(YR_RULE*, rule);
+  DECLARE_REFERENCE(char *, identifier);
+  DECLARE_REFERENCE(uint8_t *, string);
+  DECLARE_REFERENCE(YR_STRING *, chained_to);
+  DECLARE_REFERENCE(YR_RULE *, rule);
 
   int32_t chain_gap_min;
   int32_t chain_gap_max;
@@ -276,73 +267,70 @@ struct YR_STRING
 
   // Used only when PROFILING_ENABLED is defined
   volatile int64_t time_cost;
-};
 
+  uint32_t re_length;
+  RE_CLASS *re_alphabet;
+};
 
 struct YR_RULE
 {
-  int32_t g_flags;                  // Global flags
-  int32_t t_flags[YR_MAX_THREADS];  // Thread-specific flags
+  int32_t g_flags;                 // Global flags
+  int32_t t_flags[YR_MAX_THREADS]; // Thread-specific flags
 
-  DECLARE_REFERENCE(const char*, identifier);
-  DECLARE_REFERENCE(const char*, tags);
-  DECLARE_REFERENCE(YR_META*, metas);
-  DECLARE_REFERENCE(YR_STRING*, strings);
-  DECLARE_REFERENCE(YR_NAMESPACE*, ns);
+  DECLARE_REFERENCE(const char *, identifier);
+  DECLARE_REFERENCE(const char *, tags);
+  DECLARE_REFERENCE(YR_META *, metas);
+  DECLARE_REFERENCE(YR_STRING *, strings);
+  DECLARE_REFERENCE(YR_NAMESPACE *, ns);
 
   // Used only when PROFILING_ENABLED is defined
   volatile int64_t time_cost;
 };
 
-
 struct YR_EXTERNAL_VARIABLE
 {
   int32_t type;
 
-  YR_ALIGN(8) union {
+  YR_ALIGN(8)
+  union {
     int64_t i;
     double f;
-    char* s;
+    char *s;
   } value;
 
-  DECLARE_REFERENCE(const char*, identifier);
+  DECLARE_REFERENCE(const char *, identifier);
 };
-
 
 struct YR_AC_MATCH
 {
   uint16_t backtrack;
 
-  DECLARE_REFERENCE(YR_STRING*, string);
-  DECLARE_REFERENCE(const uint8_t*, forward_code);
-  DECLARE_REFERENCE(const uint8_t*, backward_code);
-  DECLARE_REFERENCE(YR_AC_MATCH*, next);
+  DECLARE_REFERENCE(YR_STRING *, string);
+  DECLARE_REFERENCE(const uint8_t *, forward_code);
+  DECLARE_REFERENCE(const uint8_t *, backward_code);
+  DECLARE_REFERENCE(YR_AC_MATCH *, next);
 };
-
 
 struct YR_AC_MATCH_TABLE_ENTRY
 {
-  DECLARE_REFERENCE(YR_AC_MATCH*, match);
+  DECLARE_REFERENCE(YR_AC_MATCH *, match);
 };
 
-
-typedef uint32_t                  YR_AC_TRANSITION;
-typedef YR_AC_TRANSITION*         YR_AC_TRANSITION_TABLE;
-typedef YR_AC_MATCH_TABLE_ENTRY*  YR_AC_MATCH_TABLE;
-
+typedef uint32_t YR_AC_TRANSITION;
+typedef YR_AC_TRANSITION *YR_AC_TRANSITION_TABLE;
+typedef YR_AC_MATCH_TABLE_ENTRY *YR_AC_MATCH_TABLE;
 
 struct YR_AC_TABLES
 {
-  YR_AC_TRANSITION* transitions;
-  YR_AC_MATCH_TABLE_ENTRY* matches;
+  YR_AC_TRANSITION *transitions;
+  YR_AC_MATCH_TABLE_ENTRY *matches;
 };
-
 
 typedef struct YARA_RULES_FILE_HEADER
 {
-  DECLARE_REFERENCE(YR_RULE*, rules_list_head);
-  DECLARE_REFERENCE(YR_EXTERNAL_VARIABLE*, externals_list_head);
-  DECLARE_REFERENCE(const uint8_t*, code_start);
+  DECLARE_REFERENCE(YR_RULE *, rules_list_head);
+  DECLARE_REFERENCE(YR_EXTERNAL_VARIABLE *, externals_list_head);
+  DECLARE_REFERENCE(const uint8_t *, code_start);
   DECLARE_REFERENCE(YR_AC_MATCH_TABLE, ac_match_table);
   DECLARE_REFERENCE(YR_AC_TRANSITION_TABLE, ac_transition_table);
 
@@ -352,17 +340,14 @@ typedef struct YARA_RULES_FILE_HEADER
 
 } YARA_RULES_FILE_HEADER;
 
-
 typedef struct _YR_INIT_RULE_ARGS
 {
-  DECLARE_REFERENCE(YR_RULE*, rule);
-  DECLARE_REFERENCE(const uint8_t*, jmp_addr);
+  DECLARE_REFERENCE(YR_RULE *, rule);
+  DECLARE_REFERENCE(const uint8_t *, jmp_addr);
 
 } YR_INIT_RULE_ARGS;
 
-
 #pragma pack(pop)
-
 
 //
 // Structs defined below are never stored in the compiled rules file
@@ -385,15 +370,14 @@ struct RE_NODE
 
   int greedy;
 
-  RE_CLASS* re_class;
+  RE_CLASS *re_class;
 
-  RE_NODE* left;
-  RE_NODE* right;
+  RE_NODE *left;
+  RE_NODE *right;
 
-  uint8_t* forward_code;
-  uint8_t* backward_code;
+  uint8_t *forward_code;
+  uint8_t *backward_code;
 };
-
 
 struct RE_CLASS
 {
@@ -401,20 +385,18 @@ struct RE_CLASS
   uint8_t bitmap[32];
 };
 
-
 struct RE_AST
 {
   uint32_t flags;
   uint16_t levels;
-  RE_NODE* root_node;
+  RE_NODE *root_node;
 };
-
 
 // Disable warning due to zero length array in Microsoft's compiler
 
 #ifdef _MSC_VER
 #pragma warning(push)
-#pragma warning(disable:4200)
+#pragma warning(disable : 4200)
 #endif
 
 struct RE
@@ -427,32 +409,28 @@ struct RE
 #pragma warning(pop)
 #endif
 
-
 struct RE_ERROR
 {
   char message[384];
 };
 
-
 struct RE_FIBER
 {
-  const uint8_t* ip;    // instruction pointer
-  int32_t  sp;          // stack pointer
-  int32_t  rc;          // repeat counter
+  const uint8_t *ip; // instruction pointer
+  int32_t sp;        // stack pointer
+  int32_t rc;        // repeat counter
 
   uint16_t stack[RE_MAX_STACK];
 
-  RE_FIBER* prev;
-  RE_FIBER* next;
+  RE_FIBER *prev;
+  RE_FIBER *next;
 };
-
 
 struct RE_FIBER_LIST
 {
-  RE_FIBER* head;
-  RE_FIBER* tail;
+  RE_FIBER *head;
+  RE_FIBER *tail;
 };
-
 
 struct RE_FIBER_POOL
 {
@@ -460,29 +438,27 @@ struct RE_FIBER_POOL
   RE_FIBER_LIST fibers;
 };
 
-
 struct YR_MATCH
 {
-  int64_t base;              // Base address for the match
-  int64_t offset;            // Offset relative to base for the match
-  int32_t match_length;      // Match length
+  int64_t base;         // Base address for the match
+  int64_t offset;       // Offset relative to base for the match
+  int32_t match_length; // Match length
   int32_t data_length;
 
   // Pointer to a buffer containing a portion of the matched data. The size of
   // the buffer is data_length. data_length is always <= length and is limited
   // to MAX_MATCH_DATA bytes.
 
-  const uint8_t* data;
+  const uint8_t *data;
 
   // If the match belongs to a chained string chain_length contains the
   // length of the chain. This field is used only in unconfirmed matches.
 
   int32_t chain_length;
 
-  YR_MATCH* prev;
-  YR_MATCH* next;
+  YR_MATCH *prev;
+  YR_MATCH *next;
 };
-
 
 struct YR_AC_STATE
 {
@@ -491,12 +467,11 @@ struct YR_AC_STATE
 
   uint32_t t_table_slot;
 
-  YR_AC_STATE* failure;
-  YR_AC_STATE* first_child;
-  YR_AC_STATE* siblings;
-  YR_AC_MATCH* matches;
+  YR_AC_STATE *failure;
+  YR_AC_STATE *first_child;
+  YR_AC_STATE *siblings;
+  YR_AC_MATCH *matches;
 };
-
 
 struct YR_AC_AUTOMATON
 {
@@ -508,23 +483,22 @@ struct YR_AC_AUTOMATON
 
   // Bitmask where each bit indicates if the corresponding slot in m_table
   // and t_table is already in use.
-  YR_BITMASK* bitmask;
+  YR_BITMASK *bitmask;
 
   YR_AC_TRANSITION_TABLE t_table;
   YR_AC_MATCH_TABLE m_table;
-  YR_AC_STATE* root;
+  YR_AC_STATE *root;
 };
-
 
 struct YR_RULES
 {
   unsigned char tidx_mask[YR_BITARRAY_NCHARS(YR_MAX_THREADS)];
-  const uint8_t* code_start;
+  const uint8_t *code_start;
 
   YR_MUTEX mutex;
-  YR_ARENA* arena;
-  YR_RULE* rules_list_head;
-  YR_EXTERNAL_VARIABLE* externals_list_head;
+  YR_ARENA *arena;
+  YR_RULE *rules_list_head;
+  YR_EXTERNAL_VARIABLE *externals_list_head;
   YR_AC_TRANSITION_TABLE ac_transition_table;
   YR_AC_MATCH_TABLE ac_match_table;
 
@@ -535,7 +509,6 @@ struct YR_RULES
   // Used only when PROFILING_ENABLED is defined.
   uint64_t time_cost;
 };
-
 
 struct YR_RULES_STATS
 {
@@ -568,40 +541,34 @@ struct YR_RULES_STATS
   uint32_t ac_tables_size;
 };
 
+typedef const uint8_t *(*YR_MEMORY_BLOCK_FETCH_DATA_FUNC)(
+    YR_MEMORY_BLOCK *self);
 
-typedef const uint8_t* (*YR_MEMORY_BLOCK_FETCH_DATA_FUNC)(
-    YR_MEMORY_BLOCK* self);
-
-
-typedef YR_MEMORY_BLOCK* (*YR_MEMORY_BLOCK_ITERATOR_FUNC)(
-    YR_MEMORY_BLOCK_ITERATOR* self);
-
+typedef YR_MEMORY_BLOCK *(*YR_MEMORY_BLOCK_ITERATOR_FUNC)(
+    YR_MEMORY_BLOCK_ITERATOR *self);
 
 struct YR_MEMORY_BLOCK
 {
   size_t size;
   uint64_t base;
 
-  void* context;
+  void *context;
 
   YR_MEMORY_BLOCK_FETCH_DATA_FUNC fetch_data;
 };
 
-
 struct YR_MEMORY_BLOCK_ITERATOR
 {
-  void* context;
+  void *context;
 
-  YR_MEMORY_BLOCK_ITERATOR_FUNC  first;
-  YR_MEMORY_BLOCK_ITERATOR_FUNC  next;
+  YR_MEMORY_BLOCK_ITERATOR_FUNC first;
+  YR_MEMORY_BLOCK_ITERATOR_FUNC next;
 };
-
 
 typedef int (*YR_CALLBACK_FUNC)(
     int message,
-    void* message_data,
-    void* user_data);
-
+    void *message_data,
+    void *user_data);
 
 struct YR_SCAN_CONTEXT
 {
@@ -624,31 +591,31 @@ struct YR_SCAN_CONTEXT
   uint64_t timeout;
 
   // Pointer to user-provided data passed to the callback function.
-  void* user_data;
+  void *user_data;
 
   // Pointer to the user-provided callback function that is called when an
   // event occurs during the scan (a rule matching, a module being loaded, etc)
   YR_CALLBACK_FUNC callback;
 
   // Pointer to the YR_RULES object associated to this scan context.
-  YR_RULES* rules;
+  YR_RULES *rules;
 
   // Pointer to the YR_STRING causing the most recent scan error.
-  YR_STRING* last_error_string;
+  YR_STRING *last_error_string;
 
   // Pointer to the iterator used for scanning
-  YR_MEMORY_BLOCK_ITERATOR* iterator;
+  YR_MEMORY_BLOCK_ITERATOR *iterator;
 
   // Pointer to a table mapping identifiers to YR_OBJECT structures. This table
   // contains entries for external variables and modules.
-  YR_HASH_TABLE* objects_table;
+  YR_HASH_TABLE *objects_table;
 
   // Arena used for storing YR_MATCH structures asociated to the matches found.
-  YR_ARENA* matches_arena;
+  YR_ARENA *matches_arena;
 
   // Arena used for storing pointers to the YR_STRING struct for each matching
   // string. The pointers are used by _yr_scanner_clean_matches.
-  YR_ARENA* matching_strings_arena;
+  YR_ARENA *matching_strings_arena;
 
   // Stopwatch used for measuring the time elapsed during the scan.
   YR_STOPWATCH stopwatch;
@@ -657,26 +624,22 @@ struct YR_SCAN_CONTEXT
   RE_FIBER_POOL re_fiber_pool;
 };
 
-
-union YR_VALUE
-{
+union YR_VALUE {
   int64_t i;
   double d;
-  void* p;
-  YR_OBJECT* o;
-  YR_STRING* s;
-  SIZED_STRING* ss;
-  RE* re;
+  void *p;
+  YR_OBJECT *o;
+  YR_STRING *s;
+  SIZED_STRING *ss;
+  RE *re;
 };
 
-
 #define OBJECT_COMMON_FIELDS \
-    int canary; \
-    int8_t type; \
-    const char* identifier; \
-    YR_OBJECT* parent; \
-    void* data;
-
+  int canary;                \
+  int8_t type;               \
+  const char *identifier;    \
+  YR_OBJECT *parent;         \
+  void *data;
 
 struct YR_OBJECT
 {
@@ -684,81 +647,72 @@ struct YR_OBJECT
   YR_VALUE value;
 };
 
-
 struct YR_OBJECT_STRUCTURE
 {
   OBJECT_COMMON_FIELDS
-  YR_STRUCTURE_MEMBER* members;
+  YR_STRUCTURE_MEMBER *members;
 };
-
 
 struct YR_OBJECT_ARRAY
 {
   OBJECT_COMMON_FIELDS
-  YR_OBJECT* prototype_item;
-  YR_ARRAY_ITEMS* items;
+  YR_OBJECT *prototype_item;
+  YR_ARRAY_ITEMS *items;
 };
-
 
 struct YR_OBJECT_DICTIONARY
 {
   OBJECT_COMMON_FIELDS
-  YR_OBJECT* prototype_item;
-  YR_DICTIONARY_ITEMS* items;
+  YR_OBJECT *prototype_item;
+  YR_DICTIONARY_ITEMS *items;
 };
 
-
 typedef int (*YR_MODULE_FUNC)(
-    YR_VALUE* args,
-    YR_SCAN_CONTEXT* context,
-    YR_OBJECT_FUNCTION* function_obj);
-
+    YR_VALUE *args,
+    YR_SCAN_CONTEXT *context,
+    YR_OBJECT_FUNCTION *function_obj);
 
 struct YR_OBJECT_FUNCTION
 {
   OBJECT_COMMON_FIELDS
-  YR_OBJECT* return_obj;
+  YR_OBJECT *return_obj;
 
   struct
   {
-    const char* arguments_fmt;
+    const char *arguments_fmt;
     YR_MODULE_FUNC code;
   } prototypes[YR_MAX_OVERLOADED_FUNCTIONS];
 };
 
-
-#define object_as_structure(obj)  ((YR_OBJECT_STRUCTURE*) (obj))
-#define object_as_array(obj)      ((YR_OBJECT_ARRAY*) (obj))
-#define object_as_dictionary(obj) ((YR_OBJECT_DICTIONARY*) (obj))
-#define object_as_function(obj)   ((YR_OBJECT_FUNCTION*) (obj))
-
+#define object_as_structure(obj) ((YR_OBJECT_STRUCTURE *)(obj))
+#define object_as_array(obj) ((YR_OBJECT_ARRAY *)(obj))
+#define object_as_dictionary(obj) ((YR_OBJECT_DICTIONARY *)(obj))
+#define object_as_function(obj) ((YR_OBJECT_FUNCTION *)(obj))
 
 struct YR_STRUCTURE_MEMBER
 {
-  YR_OBJECT* object;
-  YR_STRUCTURE_MEMBER* next;
+  YR_OBJECT *object;
+  YR_STRUCTURE_MEMBER *next;
 };
-
 
 struct YR_ARRAY_ITEMS
 {
   int count;
-  YR_OBJECT* objects[1];
+  YR_OBJECT *objects[1];
 };
-
 
 struct YR_DICTIONARY_ITEMS
 {
   int used;
   int free;
 
-  struct {
+  struct
+  {
 
-    char* key;
-    YR_OBJECT* obj;
+    char *key;
+    YR_OBJECT *obj;
 
   } objects[1];
 };
-
 
 #endif

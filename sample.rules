@@ -1,11 +1,18 @@
 
 rule UPX : Packer
 {
+    meta:
+	acf = " hoge"
+	re1 = "19"
+	re2 = "6"
+
     strings: 
-        $a = {60 E8 00 00 00 00 58 83 E8 3D 50 8D B8}
+	$re1 = /^[ab](abc)+[ac]*.{10} (ab|hoge).\D$/
+	$re2 = {A2 A? ?? [2-4] A3 [0-5] 4A}
+	$re3 = /a/
 
     condition:
-        $a at entrypoint
+        $re1
         
 }
 

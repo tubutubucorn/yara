@@ -1,6 +1,6 @@
-#line 2 "lexer.c"
+#line 2 "lex.yyhex_lexer.c"
 
-#line 4 "lexer.c"
+#line 4 "lex.yyhex_lexer.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -15,225 +15,225 @@
 #endif
 
 #ifdef yy_create_buffer
-#define yara_yy_create_buffer_ALREADY_DEFINED
+#define hex_yy_create_buffer_ALREADY_DEFINED
 #else
-#define yy_create_buffer yara_yy_create_buffer
+#define yy_create_buffer hex_yy_create_buffer
 #endif
 
 #ifdef yy_delete_buffer
-#define yara_yy_delete_buffer_ALREADY_DEFINED
+#define hex_yy_delete_buffer_ALREADY_DEFINED
 #else
-#define yy_delete_buffer yara_yy_delete_buffer
+#define yy_delete_buffer hex_yy_delete_buffer
 #endif
 
 #ifdef yy_scan_buffer
-#define yara_yy_scan_buffer_ALREADY_DEFINED
+#define hex_yy_scan_buffer_ALREADY_DEFINED
 #else
-#define yy_scan_buffer yara_yy_scan_buffer
+#define yy_scan_buffer hex_yy_scan_buffer
 #endif
 
 #ifdef yy_scan_string
-#define yara_yy_scan_string_ALREADY_DEFINED
+#define hex_yy_scan_string_ALREADY_DEFINED
 #else
-#define yy_scan_string yara_yy_scan_string
+#define yy_scan_string hex_yy_scan_string
 #endif
 
 #ifdef yy_scan_bytes
-#define yara_yy_scan_bytes_ALREADY_DEFINED
+#define hex_yy_scan_bytes_ALREADY_DEFINED
 #else
-#define yy_scan_bytes yara_yy_scan_bytes
+#define yy_scan_bytes hex_yy_scan_bytes
 #endif
 
 #ifdef yy_init_buffer
-#define yara_yy_init_buffer_ALREADY_DEFINED
+#define hex_yy_init_buffer_ALREADY_DEFINED
 #else
-#define yy_init_buffer yara_yy_init_buffer
+#define yy_init_buffer hex_yy_init_buffer
 #endif
 
 #ifdef yy_flush_buffer
-#define yara_yy_flush_buffer_ALREADY_DEFINED
+#define hex_yy_flush_buffer_ALREADY_DEFINED
 #else
-#define yy_flush_buffer yara_yy_flush_buffer
+#define yy_flush_buffer hex_yy_flush_buffer
 #endif
 
 #ifdef yy_load_buffer_state
-#define yara_yy_load_buffer_state_ALREADY_DEFINED
+#define hex_yy_load_buffer_state_ALREADY_DEFINED
 #else
-#define yy_load_buffer_state yara_yy_load_buffer_state
+#define yy_load_buffer_state hex_yy_load_buffer_state
 #endif
 
 #ifdef yy_switch_to_buffer
-#define yara_yy_switch_to_buffer_ALREADY_DEFINED
+#define hex_yy_switch_to_buffer_ALREADY_DEFINED
 #else
-#define yy_switch_to_buffer yara_yy_switch_to_buffer
+#define yy_switch_to_buffer hex_yy_switch_to_buffer
 #endif
 
 #ifdef yypush_buffer_state
-#define yara_yypush_buffer_state_ALREADY_DEFINED
+#define hex_yypush_buffer_state_ALREADY_DEFINED
 #else
-#define yypush_buffer_state yara_yypush_buffer_state
+#define yypush_buffer_state hex_yypush_buffer_state
 #endif
 
 #ifdef yypop_buffer_state
-#define yara_yypop_buffer_state_ALREADY_DEFINED
+#define hex_yypop_buffer_state_ALREADY_DEFINED
 #else
-#define yypop_buffer_state yara_yypop_buffer_state
+#define yypop_buffer_state hex_yypop_buffer_state
 #endif
 
 #ifdef yyensure_buffer_stack
-#define yara_yyensure_buffer_stack_ALREADY_DEFINED
+#define hex_yyensure_buffer_stack_ALREADY_DEFINED
 #else
-#define yyensure_buffer_stack yara_yyensure_buffer_stack
+#define yyensure_buffer_stack hex_yyensure_buffer_stack
 #endif
 
 #ifdef yylex
-#define yara_yylex_ALREADY_DEFINED
+#define hex_yylex_ALREADY_DEFINED
 #else
-#define yylex yara_yylex
+#define yylex hex_yylex
 #endif
 
 #ifdef yyrestart
-#define yara_yyrestart_ALREADY_DEFINED
+#define hex_yyrestart_ALREADY_DEFINED
 #else
-#define yyrestart yara_yyrestart
+#define yyrestart hex_yyrestart
 #endif
 
 #ifdef yylex_init
-#define yara_yylex_init_ALREADY_DEFINED
+#define hex_yylex_init_ALREADY_DEFINED
 #else
-#define yylex_init yara_yylex_init
+#define yylex_init hex_yylex_init
 #endif
 
 #ifdef yylex_init_extra
-#define yara_yylex_init_extra_ALREADY_DEFINED
+#define hex_yylex_init_extra_ALREADY_DEFINED
 #else
-#define yylex_init_extra yara_yylex_init_extra
+#define yylex_init_extra hex_yylex_init_extra
 #endif
 
 #ifdef yylex_destroy
-#define yara_yylex_destroy_ALREADY_DEFINED
+#define hex_yylex_destroy_ALREADY_DEFINED
 #else
-#define yylex_destroy yara_yylex_destroy
+#define yylex_destroy hex_yylex_destroy
 #endif
 
 #ifdef yyget_debug
-#define yara_yyget_debug_ALREADY_DEFINED
+#define hex_yyget_debug_ALREADY_DEFINED
 #else
-#define yyget_debug yara_yyget_debug
+#define yyget_debug hex_yyget_debug
 #endif
 
 #ifdef yyset_debug
-#define yara_yyset_debug_ALREADY_DEFINED
+#define hex_yyset_debug_ALREADY_DEFINED
 #else
-#define yyset_debug yara_yyset_debug
+#define yyset_debug hex_yyset_debug
 #endif
 
 #ifdef yyget_extra
-#define yara_yyget_extra_ALREADY_DEFINED
+#define hex_yyget_extra_ALREADY_DEFINED
 #else
-#define yyget_extra yara_yyget_extra
+#define yyget_extra hex_yyget_extra
 #endif
 
 #ifdef yyset_extra
-#define yara_yyset_extra_ALREADY_DEFINED
+#define hex_yyset_extra_ALREADY_DEFINED
 #else
-#define yyset_extra yara_yyset_extra
+#define yyset_extra hex_yyset_extra
 #endif
 
 #ifdef yyget_in
-#define yara_yyget_in_ALREADY_DEFINED
+#define hex_yyget_in_ALREADY_DEFINED
 #else
-#define yyget_in yara_yyget_in
+#define yyget_in hex_yyget_in
 #endif
 
 #ifdef yyset_in
-#define yara_yyset_in_ALREADY_DEFINED
+#define hex_yyset_in_ALREADY_DEFINED
 #else
-#define yyset_in yara_yyset_in
+#define yyset_in hex_yyset_in
 #endif
 
 #ifdef yyget_out
-#define yara_yyget_out_ALREADY_DEFINED
+#define hex_yyget_out_ALREADY_DEFINED
 #else
-#define yyget_out yara_yyget_out
+#define yyget_out hex_yyget_out
 #endif
 
 #ifdef yyset_out
-#define yara_yyset_out_ALREADY_DEFINED
+#define hex_yyset_out_ALREADY_DEFINED
 #else
-#define yyset_out yara_yyset_out
+#define yyset_out hex_yyset_out
 #endif
 
 #ifdef yyget_leng
-#define yara_yyget_leng_ALREADY_DEFINED
+#define hex_yyget_leng_ALREADY_DEFINED
 #else
-#define yyget_leng yara_yyget_leng
+#define yyget_leng hex_yyget_leng
 #endif
 
 #ifdef yyget_text
-#define yara_yyget_text_ALREADY_DEFINED
+#define hex_yyget_text_ALREADY_DEFINED
 #else
-#define yyget_text yara_yyget_text
+#define yyget_text hex_yyget_text
 #endif
 
 #ifdef yyget_lineno
-#define yara_yyget_lineno_ALREADY_DEFINED
+#define hex_yyget_lineno_ALREADY_DEFINED
 #else
-#define yyget_lineno yara_yyget_lineno
+#define yyget_lineno hex_yyget_lineno
 #endif
 
 #ifdef yyset_lineno
-#define yara_yyset_lineno_ALREADY_DEFINED
+#define hex_yyset_lineno_ALREADY_DEFINED
 #else
-#define yyset_lineno yara_yyset_lineno
+#define yyset_lineno hex_yyset_lineno
 #endif
 
 #ifdef yyget_column
-#define yara_yyget_column_ALREADY_DEFINED
+#define hex_yyget_column_ALREADY_DEFINED
 #else
-#define yyget_column yara_yyget_column
+#define yyget_column hex_yyget_column
 #endif
 
 #ifdef yyset_column
-#define yara_yyset_column_ALREADY_DEFINED
+#define hex_yyset_column_ALREADY_DEFINED
 #else
-#define yyset_column yara_yyset_column
+#define yyset_column hex_yyset_column
 #endif
 
 #ifdef yywrap
-#define yara_yywrap_ALREADY_DEFINED
+#define hex_yywrap_ALREADY_DEFINED
 #else
-#define yywrap yara_yywrap
+#define yywrap hex_yywrap
 #endif
 
 #ifdef yyget_lval
-#define yara_yyget_lval_ALREADY_DEFINED
+#define hex_yyget_lval_ALREADY_DEFINED
 #else
-#define yyget_lval yara_yyget_lval
+#define yyget_lval hex_yyget_lval
 #endif
 
 #ifdef yyset_lval
-#define yara_yyset_lval_ALREADY_DEFINED
+#define hex_yyset_lval_ALREADY_DEFINED
 #else
-#define yyset_lval yara_yyset_lval
+#define yyset_lval hex_yyset_lval
 #endif
 
 #ifdef yyalloc
-#define yara_yyalloc_ALREADY_DEFINED
+#define hex_yyalloc_ALREADY_DEFINED
 #else
-#define yyalloc yara_yyalloc
+#define yyalloc hex_yyalloc
 #endif
 
 #ifdef yyrealloc
-#define yara_yyrealloc_ALREADY_DEFINED
+#define hex_yyrealloc_ALREADY_DEFINED
 #else
-#define yyrealloc yara_yyrealloc
+#define yyrealloc hex_yyrealloc
 #endif
 
 #ifdef yyfree
-#define yara_yyfree_ALREADY_DEFINED
+#define hex_yyfree_ALREADY_DEFINED
 #else
-#define yyfree yara_yyfree
+#define yyfree hex_yyfree
 #endif
 
 /* First, we deal with  platform-specific or compiler-specific issues. */
@@ -331,7 +331,7 @@ typedef unsigned int flex_uint32_t;
 /* Promotes a possibly negative, possibly signed char to an
  *   integer in range [0..255] for use as an array index.
  */
-#define YY_SC_TO_UI(c) ((YY_CHAR) (c))
+#define YY_SC_TO_UI(c) ((YYHEX_LEXER_CHAR) (c))
 
 /* An opaque pointer. */
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -346,8 +346,8 @@ typedef void* yyscan_t;
 #define yyextra yyg->yyextra_r
 #define yyleng yyg->yyleng_r
 #define yytext yyg->yytext_r
-#define yylineno (YY_CURRENT_BUFFER_LVALUE->yy_bs_lineno)
-#define yycolumn (YY_CURRENT_BUFFER_LVALUE->yy_bs_column)
+#define yylineno (YYHEX_LEXER_CURRENT_BUFFER_LVALUE->yy_bs_lineno)
+#define yycolumn (YYHEX_LEXER_CURRENT_BUFFER_LVALUE->yy_bs_column)
 #define yy_flex_debug yyg->yy_flex_debug_r
 
 /* Enter a start condition.  This macro really ought to take a parameter,
@@ -365,7 +365,7 @@ typedef void* yyscan_t;
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 /* Special action meaning "start processing a new file". */
 #define YY_NEW_FILE yyrestart( yyin , yyscanner )
-#define YY_END_OF_BUFFER_CHAR 0
+#define YY_END_OF_BUFFERHEX_LEXER_CHAR 0
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
@@ -394,7 +394,7 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-#define EOB_ACT_CONTINUE_SCAN 0
+#define EOB_ACTHEX_LEXER_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
     
@@ -506,13 +506,13 @@ struct yy_buffer_state
  *
  * Returns the top of the stack, or NULL.
  */
-#define YY_CURRENT_BUFFER ( yyg->yy_buffer_stack \
+#define YYHEX_LEXER_CURRENT_BUFFER ( yyg->yy_buffer_stack \
                           ? yyg->yy_buffer_stack[yyg->yy_buffer_stack_top] \
                           : NULL)
 /* Same as previous macro, but useful when we know that the buffer stack is not
  * NULL or when we need an lvalue. For internal use only.
  */
-#define YY_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
+#define YYHEX_LEXER_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
 
 void yyrestart ( FILE *input_file , yyscan_t yyscanner );
 void yy_switch_to_buffer ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
@@ -525,7 +525,7 @@ void yypop_buffer_state ( yyscan_t yyscanner );
 static void yyensure_buffer_stack ( yyscan_t yyscanner );
 static void yy_load_buffer_state ( yyscan_t yyscanner );
 static void yy_init_buffer ( YY_BUFFER_STATE b, FILE *file , yyscan_t yyscanner );
-#define YY_FLUSH_BUFFER yy_flush_buffer( YY_CURRENT_BUFFER , yyscanner)
+#define YY_FLUSH_BUFFER yy_flush_buffer( YYHEX_LEXER_CURRENT_BUFFER , yyscanner)
 
 YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size , yyscan_t yyscanner );
 YY_BUFFER_STATE yy_scan_string ( const char *yy_str , yyscan_t yyscanner );
@@ -554,11 +554,11 @@ void yyfree ( void * , yyscan_t yyscanner );
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
-#define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
+#define YY_AT_BOL() (YYHEX_LEXER_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
 
-#define yara_yywrap(yyscanner) (/*CONSTCOND*/1)
+#define hex_yywrap(yyscanner) (/*CONSTCOND*/1)
 #define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
@@ -580,8 +580,8 @@ static void yynoreturn yy_fatal_error ( const char* msg , yyscan_t yyscanner );
 	yyg->yy_hold_char = *yy_cp; \
 	*yy_cp = '\0'; \
 	yyg->yy_c_buf_p = yy_cp;
-#define YY_NUM_RULES 75
-#define YY_END_OF_BUFFER 76
+#define YY_NUM_RULES 16
+#define YY_END_OF_BUFFER 17
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -589,53 +589,30 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[248] =
+static const flex_int16_t yy_accept[35] =
     {   0,
-        0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-       76,   74,   73,   73,   49,   70,   47,   46,   74,   71,
-       52,   52,    2,   74,    3,   48,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   74,   62,   63,   56,   75,   68,   69,
-       65,   75,   43,   44,   40,   40,   49,    7,   47,   45,
-       46,    1,   38,   41,    0,   52,    0,    0,    0,    0,
-        8,    4,    6,    5,    9,   48,   51,   51,   51,   51,
-       26,   51,   51,   51,   51,   51,   51,   51,   51,   27,
-       51,   51,   51,   28,   25,   51,   51,   51,   51,   51,
-
-       51,   51,   51,    0,    0,   62,   64,   59,   60,   58,
-       57,   64,   68,   65,   65,   67,   66,   43,   39,   41,
-       53,   52,   55,   54,   31,   24,   32,   51,   51,   51,
-       51,   51,   30,   51,   51,   51,   51,   51,   51,   51,
-       51,   23,   51,   51,   51,   51,   51,   51,   51,   17,
-       72,    0,    0,    0,   51,   51,   51,   51,   51,   51,
-       51,   51,   51,   51,   51,   51,   50,   51,   13,   51,
-       51,   12,   51,   29,   21,   16,    0,    0,    0,    0,
-        0,   72,   61,   15,   51,   51,   51,   22,   51,   51,
-       51,   51,   51,   51,   51,   51,   51,   51,    0,    0,
-
-       51,   51,   51,   51,   51,   11,   37,   51,   50,   51,
-       19,   51,   51,    0,    0,    0,    0,    0,   72,   51,
-       51,   51,   51,   51,   51,   35,   10,   14,    0,   72,
-        0,    0,    0,   51,   36,   51,   34,   18,    0,    0,
-        0,    0,   20,   51,   42,   33,    0
+        0,    0,    0,    0,    0,    0,   17,   15,   13,   13,
+       14,   15,   15,   15,    5,   16,   12,   11,   11,    8,
+        9,   10,    0,    7,    1,    2,    3,    4,    9,    0,
+        0,    7,    6,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
-        1,    1,    4,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    5,    6,    7,    8,    1,    1,    1,    9,
-        9,   10,    1,    1,    9,   11,   12,   13,   14,   15,
-       16,   17,   17,   18,   17,   19,   20,    1,    1,   21,
-       22,   23,    9,   24,   25,   26,   25,   25,   25,   25,
-       27,   27,   27,   27,   28,   27,   29,   27,   27,   27,
-       27,   27,   27,   27,   27,   27,   27,   27,   27,   27,
-        9,   30,    9,    1,   31,    1,   32,   33,   34,   35,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    4,
+        4,    5,    1,    1,    6,    1,    7,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,    1,    1,    1,
+        1,    1,    9,    1,   10,   10,   10,   10,   10,   10,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+       11,    1,   12,    1,    1,    1,   10,   10,   10,   10,
 
-       36,   37,   38,   39,   40,   27,   27,   41,   42,   43,
-       44,   45,   27,   46,   47,   48,   49,   50,   51,   52,
-       53,   54,   55,    9,   56,    1,    1,    1,    1,    1,
+       10,   10,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    4,    4,    4,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -652,239 +629,52 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[57] =
+static const YY_CHAR yy_meta[13] =
     {   0,
-        1,    2,    3,    2,    1,    4,    1,    1,    2,    5,
-        6,    7,    8,    8,    8,    8,    8,    8,    8,    8,
-        1,    9,    1,    1,   10,   10,   11,   12,   12,   13,
-       11,   10,   10,   10,   10,   10,   10,   11,   11,   11,
-       11,   11,   11,   12,   11,   11,   11,   11,   11,   11,
-       11,   12,   11,   11,    1,    1
+        1,    1,    2,    1,    1,    1,    1,    3,    3,    3,
+        1,    1
     } ;
 
-static const flex_int16_t yy_base[270] =
+static const flex_int16_t yy_base[40] =
     {   0,
-        0,    0,   54,   55,   56,   59,  587,  586,  581,  579,
-      560,  594,  594,  594,  535,  594,    0,  535,  522,   53,
-       53,   59,   45,  497,   50,    0,    0,   51,  467,  464,
-       51,  442,   32,   44,  438,   32,  432,  426,  426,   62,
-      433,  427,  418,  447,    0,  594,  594,   84,    0,  594,
-       62,  446,    0,  594,  594,  445,  433,  594,    0,  594,
-      440,  594,  594,    0,  102,    0,  422,  421,  124,    0,
-      594,  594,  594,  594,  594,    0,    0,  401,   71,  348,
-        0,  338,  332,  338,  337,  331,  335,  331,  329,   45,
-      325,  324,   62,    0,    0,  331,  329,  323,  332,  318,
-
-      323,  330,  312,   92,  113,    0,  594,  594,  594,  594,
-      594,    0,    0,  310,  594,  594,  594,    0,  594,    0,
-      136,  594,  144,    0,    0,    0,    0,  316,   78,  309,
-      307,  315,    0,  309,  316,  304,  297,  114,  301,  302,
-      301,    0,  282,  235,  230,  227,  232,  219,  230,    0,
-      594,  255,  161,    0,  224,  223,  230,  208,  224,  212,
-      207,  225,  210,  206,  236,  232,  213,  206,    0,  197,
-      211,    0,  197,    0,    0,    0,  229,  226,  216,    0,
-      119,    0,  594,    0,  189,  187,  181,    0,  184,  179,
-      181,  173,  181,  179,  178,  177,  164,  173,  272,  133,
-
-      170,  166,  164,  153,  160,    0,    0,  169,    0,  157,
-        0,  167,  155,    0,    0,  327,  188,  134,    0,  148,
-      144,  143,  136,  136,  145,    0,    0,    0,  156,  125,
-      157,  122,  172,   69,    0,   64,    0,    0,  183,  178,
-        0,  189,    0,   29,  594,    0,  594,  383,  396,  409,
-      422,  428,  433,  441,  448,  453,  458,  469,  479,  491,
-      504,  516,  529,  542,  548,  551,  561,  574,  580
+        0,    0,    0,    0,   12,    0,   46,   47,   47,   47,
+       47,   20,   36,   35,   47,   47,   47,   47,   47,   47,
+       35,   47,   37,    0,   47,   47,   47,   47,   33,   35,
+       23,    0,   33,   47,   30,   26,   23,   33,   36
     } ;
 
-static const flex_int16_t yy_def[270] =
+static const flex_int16_t yy_def[40] =
     {   0,
-      247,    1,  248,  248,  249,  249,  250,  250,  251,  251,
-      247,  247,  247,  247,  252,  247,  253,  254,  247,  247,
-      255,  255,  247,  247,  247,  256,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  258,  259,  247,  247,  260,  261,  247,
-      247,  262,  263,  247,  247,  247,  252,  247,  253,  247,
-      254,  247,  247,  264,  247,   22,  247,  247,  247,  265,
-      247,  247,  247,  247,  247,  256,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-
-      257,  257,  257,  258,  247,  259,  247,  247,  247,  247,
-      247,  266,  261,  247,  247,  247,  247,  263,  247,  264,
-      247,  247,  247,  265,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      247,  267,  268,  269,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  267,  247,  268,  179,
-      179,  179,  247,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  247,  179,
-
-      257,  257,  257,  257,  257,  257,  257,  257,  257,  257,
-      257,  257,  257,  199,  199,  267,  179,  199,  199,  257,
-      257,  257,  257,  257,  257,  257,  257,  257,  267,  267,
-      179,  199,  199,  257,  257,  257,  257,  257,  247,  267,
-      199,  199,  257,  257,  247,  257,    0,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247
+       34,    1,   35,   35,   34,    5,   34,   34,   34,   34,
+       34,   34,   36,   37,   34,   34,   34,   34,   34,   34,
+       34,   34,   38,   39,   34,   34,   34,   34,   34,   38,
+       38,   39,   38,    0,   34,   34,   34,   34,   34
     } ;
 
-static const flex_int16_t yy_nxt[651] =
+static const flex_int16_t yy_nxt[60] =
     {   0,
-       12,   13,   14,   13,   15,   16,   17,   18,   12,   12,
-       19,   20,   21,   22,   22,   22,   22,   22,   22,   22,
-       23,   24,   25,   26,   27,   27,   27,   27,   27,   12,
-       27,   28,   27,   29,   27,   30,   31,   32,   27,   33,
-       27,   34,   35,   36,   37,   38,   39,   40,   41,   27,
-       42,   43,   27,   27,   44,   12,   46,   46,   50,   47,
-       47,   50,   63,   65,   64,   71,   72,   51,   94,   65,
-       51,   74,   75,   89,   90,   91,  246,   95,  137,   92,
-       67,   68,   84,   48,   48,   52,   67,   68,   52,  108,
-       85,   78,  138,   79,   86,  141,   69,   80,   81,   87,
-
-       99,  114,  247,  105,   70,  126,  244,  100,  115,  142,
-      247,  243,  156,  109,  121,  121,  121,  121,  121,  121,
-      121,  121,  152,  127,  153,  157,  110,  165,  199,  166,
-      200,  111,  167,  242,  178,  112,  123,  123,  123,  123,
-      123,  123,  199,  232,  200,  233,  239,  151,  121,  121,
-      121,  121,  121,  121,  121,  121,  123,  123,  123,  123,
-      123,  123,  180,  104,  180,  240,  199,  241,  200,  180,
-      238,  237,  181,  180,  180,  180,  180,  180,  180,  180,
-      180,  232,  236,  233,  239,  180,  180,  178,  245,  216,
-      235,  234,  180,  180,  180,  180,  180,  180,  232,  231,
-
-      233,  228,  227,  226,  225,  224,  223,  222,  221,  220,
-      213,  212,  211,  210,  209,  208,  182,  180,  104,  180,
-      207,  206,  205,  204,  180,  203,  202,  181,  180,  180,
-      180,  180,  180,  180,  180,  180,  201,  104,  178,  198,
-      180,  180,  197,  196,  195,  194,  167,  180,  180,  180,
-      180,  180,  180,  167,  193,  192,  191,  190,  189,  188,
-      187,  186,  185,  184,  178,  176,  138,  175,  174,  173,
-      172,  182,  214,  215,  216,  215,  214,  214,  214,  214,
-      215,  217,  214,  218,  215,  215,  215,  215,  215,  215,
-      215,  215,  214,  214,  214,  214,  215,  215,  214,  214,
-
-      214,  214,  214,  215,  215,  215,  215,  215,  215,  214,
-      214,  214,  214,  214,  214,  214,  214,  214,  214,  214,
-      214,  214,  214,  214,  214,  214,  214,  219,  216,  216,
-      216,  171,  170,  169,  168,  216,  178,  164,  229,  216,
-      216,  216,  216,  216,  216,  216,  216,  163,  162,  161,
-      160,  216,  216,  159,  158,  155,  115,  150,  216,  216,
-      216,  216,  216,  216,  149,  148,  147,  146,  145,  144,
-      143,  140,  139,  136,  135,  134,  133,  132,  131,  130,
-      129,  128,  230,   45,   45,   45,   45,   45,   45,   45,
-       45,   45,   45,   45,   45,   45,   49,   49,   49,   49,
-
-       49,   49,   49,   49,   49,   49,   49,   49,   49,   53,
-       53,   53,   53,   53,   53,   53,   53,   53,   53,   53,
-       53,   53,   55,   55,   55,   55,   55,   55,   55,   55,
-       55,   55,   55,   55,   55,   57,   57,   57,   57,   57,
-       59,  125,   59,   59,   59,   61,  122,  122,   61,   60,
-       61,   61,   61,   66,  247,   66,  119,  117,  105,   66,
-       76,  103,   76,   76,   76,   77,  102,   77,   77,   77,
-      104,  104,  101,   98,   97,  104,  104,   96,  104,  106,
-      106,   93,   88,  106,  106,  106,  106,  106,  106,  106,
-      106,  107,  107,  107,  107,  107,  107,  107,  107,  107,
-
-      107,  107,  107,  107,  113,  113,   83,  113,  113,  113,
-       82,  113,  113,  113,  113,  113,  116,  116,   73,  116,
-      116,  116,  116,  116,  116,  116,  116,  116,  116,  118,
-      118,  118,   62,  118,  118,  118,  118,  118,  118,  118,
-      118,  118,  120,  120,   60,  120,  120,  120,  120,  120,
-      120,  120,  120,  120,  120,  124,   58,  124,  154,  247,
-      154,  177,  177,  177,  177,  177,  177,  177,  177,  177,
-      177,  177,  177,  177,  179,  179,  179,  179,  179,  179,
-      179,  179,  179,  179,  179,  179,  179,  183,   56,  183,
-       56,   54,   54,   11,  247,  247,  247,  247,  247,  247,
-
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247
+        8,    9,   10,   11,    8,    8,   12,   13,   14,   13,
+       15,    8,   17,   18,   19,   17,   17,   20,   17,   21,
+       17,   17,   17,   22,   23,   27,   24,   31,   25,   33,
+       16,   16,   16,   30,   30,   30,   32,   31,   32,   31,
+       29,   31,   29,   28,   26,   34,    7,   34,   34,   34,
+       34,   34,   34,   34,   34,   34,   34,   34,   34
     } ;
 
-static const flex_int16_t yy_chk[651] =
+static const flex_int16_t yy_chk[60] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    3,    4,    5,    3,
-        4,    6,   20,   21,   20,   23,   23,    5,   36,   22,
-        6,   25,   25,   33,   33,   34,  244,   36,   90,   34,
-       21,   21,   31,    3,    4,    5,   22,   22,    6,   48,
-       31,   28,   90,   28,   31,   93,   21,   28,   28,   31,
-
-       40,   51,   22,  104,   21,   79,  236,   40,   51,   93,
-       22,  234,  129,   48,   65,   65,   65,   65,   65,   65,
-       65,   65,  105,   79,  105,  129,   48,  138,  181,  138,
-      181,   48,  138,  232,  230,   48,   69,   69,   69,   69,
-       69,   69,  200,  218,  200,  218,  225,  104,  121,  121,
-      121,  121,  121,  121,  121,  121,  123,  123,  123,  123,
-      123,  123,  153,  153,  153,  229,  231,  229,  231,  153,
-      224,  223,  153,  153,  153,  153,  153,  153,  153,  153,
-      153,  233,  222,  233,  239,  153,  153,  240,  239,  240,
-      221,  220,  153,  153,  153,  153,  153,  153,  242,  217,
-
-      242,  213,  212,  210,  208,  205,  204,  203,  202,  201,
-      198,  197,  196,  195,  194,  193,  153,  179,  179,  179,
-      192,  191,  190,  189,  179,  187,  186,  179,  179,  179,
-      179,  179,  179,  179,  179,  179,  185,  178,  177,  173,
-      179,  179,  171,  170,  168,  167,  166,  179,  179,  179,
-      179,  179,  179,  165,  164,  163,  162,  161,  160,  159,
-      158,  157,  156,  155,  152,  149,  148,  147,  146,  145,
-      144,  179,  199,  199,  199,  199,  199,  199,  199,  199,
-      199,  199,  199,  199,  199,  199,  199,  199,  199,  199,
-      199,  199,  199,  199,  199,  199,  199,  199,  199,  199,
-
-      199,  199,  199,  199,  199,  199,  199,  199,  199,  199,
-      199,  199,  199,  199,  199,  199,  199,  199,  199,  199,
-      199,  199,  199,  199,  199,  199,  199,  199,  216,  216,
-      216,  143,  141,  140,  139,  216,  216,  137,  216,  216,
-      216,  216,  216,  216,  216,  216,  216,  136,  135,  134,
-      132,  216,  216,  131,  130,  128,  114,  103,  216,  216,
-      216,  216,  216,  216,  102,  101,  100,   99,   98,   97,
-       96,   92,   91,   89,   88,   87,   86,   85,   84,   83,
-       82,   80,  216,  248,  248,  248,  248,  248,  248,  248,
-      248,  248,  248,  248,  248,  248,  249,  249,  249,  249,
-
-      249,  249,  249,  249,  249,  249,  249,  249,  249,  250,
-      250,  250,  250,  250,  250,  250,  250,  250,  250,  250,
-      250,  250,  251,  251,  251,  251,  251,  251,  251,  251,
-      251,  251,  251,  251,  251,  252,  252,  252,  252,  252,
-      253,   78,  253,  253,  253,  254,   68,   67,  254,   61,
-      254,  254,  254,  255,   57,  255,   56,   52,   44,  255,
-      256,   43,  256,  256,  256,  257,   42,  257,  257,  257,
-      258,  258,   41,   39,   38,  258,  258,   37,  258,  259,
-      259,   35,   32,  259,  259,  259,  259,  259,  259,  259,
-      259,  260,  260,  260,  260,  260,  260,  260,  260,  260,
-
-      260,  260,  260,  260,  261,  261,   30,  261,  261,  261,
-       29,  261,  261,  261,  261,  261,  262,  262,   24,  262,
-      262,  262,  262,  262,  262,  262,  262,  262,  262,  263,
-      263,  263,   19,  263,  263,  263,  263,  263,  263,  263,
-      263,  263,  264,  264,   18,  264,  264,  264,  264,  264,
-      264,  264,  264,  264,  264,  265,   15,  265,  266,   11,
-      266,  267,  267,  267,  267,  267,  267,  267,  267,  267,
-      267,  267,  267,  267,  268,  268,  268,  268,  268,  268,
-      268,  268,  268,  268,  268,  268,  268,  269,   10,  269,
-        9,    8,    7,  247,  247,  247,  247,  247,  247,  247,
-
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247,
-      247,  247,  247,  247,  247,  247,  247,  247,  247,  247
+        1,    1,    5,    5,    5,    5,    5,    5,    5,    5,
+        5,    5,    5,    5,   12,   37,   12,   31,   36,   31,
+       35,   35,   35,   38,   38,   38,   39,   33,   39,   30,
+       29,   23,   21,   14,   13,    7,   34,   34,   34,   34,
+       34,   34,   34,   34,   34,   34,   34,   34,   34
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[76] =
+static const flex_int32_t yy_rule_can_match_eol[17] =
     {   0,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0,     };
+0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0,     };
 
 /* The intent behind this definition is that it'll catch
  * any uses of REJECT which flex missed.
@@ -893,9 +683,9 @@ static const flex_int32_t yy_rule_can_match_eol[76] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "lexer.l"
+#line 1 "hex_lexer.l"
 /*
-Copyright (c) 2007-2013. The YARA Authors. All Rights Reserved.
+Copyright (c) 2013. The YARA Authors. All Rights Reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -922,12 +712,12 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-/* Lexical analyzer for YARA */
-#line 33 "lexer.l"
+/* Lexical analyzer for hex strings */
+#line 33 "hex_lexer.l"
 
 /* Disable warnings for unused functions in this file.
 
-As we redefine YY_FATAL_ERROR macro to use our own function yara_yyfatal, the
+As we redefine YY_FATAL_ERROR macro to use our own function hex_yyfatal, the
 yy_fatal_error function generated by Flex is not actually used, causing a
 compiler warning. Flex doesn't offer any options to remove the yy_fatal_error
 function. When they include something like %option noyy_fatal_error as they do
@@ -938,108 +728,40 @@ with noyywrap then we can remove this pragma.
 #pragma GCC diagnostic ignored "-Wunused-function"
 #endif
 
-#include <math.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <setjmp.h>
 
-#if defined(_WIN32) || defined(__CYGWIN__)
-#include <windows.h>
-#else
-#include <sys/stat.h>
-#include <unistd.h>
-#endif
-
-#if defined(_WIN32)
-#define strtoll _strtoi64
-#endif
-
-#include <yara/integers.h>
-#include <yara/lexer.h>
-#include <yara/sizedstr.h>
+#include <yara/globals.h>
+#include <yara/limits.h>
 #include <yara/error.h>
 #include <yara/mem.h>
-#include <yara/utils.h>
+#include <yara/re.h>
+#include <yara/threading.h>
 #include <yara/strutils.h>
+#include <yara/hex_lexer.h>
 
-#include "grammar.h"
-
-#define error(error_code) \
-    { \
-      compiler->last_error = error_code; \
-      yyerror(yyscanner, compiler, NULL); \
-      yyterminate(); \
-    }
-
-#define syntax_error(error_msg) \
-    { \
-      yr_compiler_set_error_extra_info(compiler, error_msg); \
-      error(ERROR_SYNTAX_ERROR); \
-    }
-
-#define lex_check_space_ok(data, current_size, max_length) \
-    if (strlen(data) + current_size >= max_length - 1) \
-    { \
-      yyerror(yyscanner, compiler, "out of space in lex_buf"); \
-      yyterminate(); \
-    }
-
-#define yytext_to_buffer \
-    { \
-      char *yptr = yytext; \
-      lex_check_space_ok(yptr, yyextra->lex_buf_len, YR_LEX_BUF_SIZE); \
-      while(*yptr) \
-      { \
-        *yyextra->lex_buf_ptr++ = *yptr++; \
-        yyextra->lex_buf_len++; \
-      } \
-    }
-
-#define alloc_sized_string(str, str_len) \
-  SIZED_STRING* str = (SIZED_STRING*) yr_malloc( \
-      str_len + sizeof(SIZED_STRING)); \
-  if (str == NULL) \
-  { \
-    yyerror(yyscanner, compiler, "not enough memory"); \
-    yyterminate(); \
-  } \
-  else \
-  { \
-    str->length = (uint32_t) (str_len); \
-    str->flags = 0; \
-  } \
+#include "hex_grammar.h"
 
 #ifdef _WIN32
 #define snprintf _snprintf
 #endif
 
-static bool is_absolute_path(
-    char* path)
-{
-  if (path == NULL)
-    return false;
+#define ERROR_IF(x, error) \
+    if (x) \
+    { \
+      RE_AST* re_ast = yyget_extra(yyscanner); \
+      re_ast->error_code = error; \
+      YYABORT; \
+    } \
 
-  #if defined(_WIN32) || defined(__CYGWIN__)
-  return strlen(path) > 2 &&
-      path[1] == ':' && (path[2] == '/' || path[2] == '\\');
-  #else
-  return strlen(path) > 0 && path[0] == '/';
-  #endif
-}
-
-#line 1033 "lexer.c"
+#line 757 "lex.yyhex_lexer.c"
 #define YY_NO_UNISTD_H 1
 #define YY_NO_INPUT 1
 
-#line 1037 "lexer.c"
+#line 761 "lex.yyhex_lexer.c"
 
 #define INITIAL 0
-#define str 1
-#define regexp 2
-#define include 3
-#define comment 4
+#define comment 1
+#define range 2
 
 #ifndef YY_NO_UNISTD_H
 /* Special case for "unistd.h", since it is non-ANSI. We include it way
@@ -1309,10 +1031,11 @@ YY_DECL
 		}
 
 	{
-#line 163 "lexer.l"
+#line 95 "hex_lexer.l"
 
 
-#line 1316 "lexer.c"
+
+#line 1039 "lex.yyhex_lexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1339,13 +1062,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 248 )
+				if ( yy_current_state >= 35 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_current_state != 247 );
+		while ( yy_current_state != 34 );
 		yy_cp = yyg->yy_last_accepting_cpos;
 		yy_current_state = yyg->yy_last_accepting_state;
 
@@ -1379,820 +1102,135 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 165 "lexer.l"
-{ return _DOT_DOT_;     }
+#line 98 "hex_lexer.l"
+{
+
+  yylval->integer = xtoi(yytext);
+  return _BYTE_;
+}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 166 "lexer.l"
-{ return _LT_;          }
+#line 104 "hex_lexer.l"
+{
+
+  yytext[1] = '0'; // replace ? by 0
+  yylval->integer = xtoi(yytext) | 0xF000 ;
+  return _MASKED_BYTE_;
+}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 167 "lexer.l"
-{ return _GT_;          }
+#line 111 "hex_lexer.l"
+{
+
+  yytext[0] = '0'; // replace ? by 0
+  yylval->integer = xtoi(yytext) | 0x0F00 ;
+  return _MASKED_BYTE_;
+}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 168 "lexer.l"
-{ return _LE_;          }
+#line 118 "hex_lexer.l"
+{
+
+  yylval->integer = 0x0000;
+  return _MASKED_BYTE_;
+}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 169 "lexer.l"
-{ return _GE_;          }
+#line 124 "hex_lexer.l"
+{
+
+  BEGIN(range);
+  return yytext[0];
+}
 	YY_BREAK
 case 6:
+/* rule 6 can match eol */
 YY_RULE_SETUP
-#line 170 "lexer.l"
-{ return _EQ_;          }
+#line 130 "hex_lexer.l"
+// skip comments
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 171 "lexer.l"
-{ return _NEQ_;         }
+#line 132 "hex_lexer.l"
+// skip single-line comments
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 172 "lexer.l"
-{ return _SHIFT_LEFT_;  }
+#line 134 "hex_lexer.l"
+{
+  return yytext[0];
+}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 173 "lexer.l"
-{ return _SHIFT_RIGHT_; }
+#line 138 "hex_lexer.l"
+{
+
+  yylval->integer = atoi(yytext);
+  return _NUMBER_;
+}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 174 "lexer.l"
-{ return _PRIVATE_;     }
+#line 144 "hex_lexer.l"
+{
+
+  BEGIN(INITIAL);
+  return yytext[0];
+}
 	YY_BREAK
 case 11:
+/* rule 11 can match eol */
 YY_RULE_SETUP
-#line 175 "lexer.l"
-{ return _GLOBAL_;      }
+#line 150 "hex_lexer.l"
+// skip whitespaces
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 176 "lexer.l"
-{ return _RULE_;        }
+#line 152 "hex_lexer.l"
+{
+
+  yyerror(yyscanner, lex_env, "invalid character in hex string jump");
+  yyterminate();
+}
 	YY_BREAK
 case 13:
+/* rule 13 can match eol */
 YY_RULE_SETUP
-#line 177 "lexer.l"
-{ return _META_;        }
+#line 158 "hex_lexer.l"
+// skip whitespaces
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 178 "lexer.l"
-{ return _STRINGS_;     }
+#line 160 "hex_lexer.l"
+{        // pass valid characters to the parser
+
+  return yytext[0];
+}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 179 "lexer.l"
-{ return _ASCII_;       }
+#line 165 "hex_lexer.l"
+{               // reject all other characters
+
+  yyerror(yyscanner, lex_env, "invalid character in hex string");
+  yyterminate();
+}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 180 "lexer.l"
-{ return _WIDE_;        }
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 181 "lexer.l"
-{ return _XOR_;         }
-	YY_BREAK
-case 18:
-YY_RULE_SETUP
-#line 182 "lexer.l"
-{ return _FULLWORD_;    }
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
-#line 183 "lexer.l"
-{ return _NOCASE_;      }
-	YY_BREAK
-case 20:
-YY_RULE_SETUP
-#line 184 "lexer.l"
-{ return _CONDITION_;   }
-	YY_BREAK
-case 21:
-YY_RULE_SETUP
-#line 185 "lexer.l"
-{ return _TRUE_;        }
-	YY_BREAK
-case 22:
-YY_RULE_SETUP
-#line 186 "lexer.l"
-{ return _FALSE_;       }
-	YY_BREAK
-case 23:
-YY_RULE_SETUP
-#line 187 "lexer.l"
-{ return _NOT_;         }
-	YY_BREAK
-case 24:
-YY_RULE_SETUP
-#line 188 "lexer.l"
-{ return _AND_;         }
-	YY_BREAK
-case 25:
-YY_RULE_SETUP
-#line 189 "lexer.l"
-{ return _OR_;          }
-	YY_BREAK
-case 26:
-YY_RULE_SETUP
-#line 190 "lexer.l"
-{ return _AT_;          }
-	YY_BREAK
-case 27:
-YY_RULE_SETUP
-#line 191 "lexer.l"
-{ return _IN_;          }
-	YY_BREAK
-case 28:
-YY_RULE_SETUP
-#line 192 "lexer.l"
-{ return _OF_;          }
-	YY_BREAK
-case 29:
-YY_RULE_SETUP
-#line 193 "lexer.l"
-{ return _THEM_;        }
-	YY_BREAK
-case 30:
-YY_RULE_SETUP
-#line 194 "lexer.l"
-{ return _FOR_;         }
-	YY_BREAK
-case 31:
-YY_RULE_SETUP
-#line 195 "lexer.l"
-{ return _ALL_;         }
-	YY_BREAK
-case 32:
-YY_RULE_SETUP
-#line 196 "lexer.l"
-{ return _ANY_;         }
-	YY_BREAK
-case 33:
-YY_RULE_SETUP
-#line 197 "lexer.l"
-{ return _ENTRYPOINT_;  }
-	YY_BREAK
-case 34:
-YY_RULE_SETUP
-#line 198 "lexer.l"
-{ return _FILESIZE_;    }
-	YY_BREAK
-case 35:
-YY_RULE_SETUP
-#line 199 "lexer.l"
-{ return _MATCHES_;     }
-	YY_BREAK
-case 36:
-YY_RULE_SETUP
-#line 200 "lexer.l"
-{ return _CONTAINS_;    }
-	YY_BREAK
-case 37:
-YY_RULE_SETUP
-#line 201 "lexer.l"
-{ return _IMPORT_;      }
-	YY_BREAK
-case 38:
-YY_RULE_SETUP
-#line 204 "lexer.l"
-{ BEGIN(comment);       }
-	YY_BREAK
-case 39:
-YY_RULE_SETUP
-#line 205 "lexer.l"
-{ BEGIN(INITIAL);       }
-	YY_BREAK
-case 40:
-/* rule 40 can match eol */
-YY_RULE_SETUP
-#line 206 "lexer.l"
-{ /* skip comments */   }
-	YY_BREAK
-case 41:
-YY_RULE_SETUP
-#line 209 "lexer.l"
-{ /* skip single-line comments */ }
-	YY_BREAK
-case 42:
-YY_RULE_SETUP
-#line 212 "lexer.l"
-{
-                          yyextra->lex_buf_ptr = yyextra->lex_buf;
-                          yyextra->lex_buf_len = 0;
-                          BEGIN(include);
-                        }
-	YY_BREAK
-case 43:
-/* rule 43 can match eol */
-YY_RULE_SETUP
-#line 219 "lexer.l"
-{ yytext_to_buffer; }
-	YY_BREAK
-case 44:
-YY_RULE_SETUP
-#line 222 "lexer.l"
-{
-
-  if (compiler->include_callback != NULL)
-  {
-    #ifdef _MSC_VER
-    char* b = NULL;
-    #endif
-    char* s = NULL;
-    char* f;
-
-    char buffer[1024];
-    const char* included_rules;
-    char* current_file_name;
-    char* include_path;
-
-    *yyextra->lex_buf_ptr = '\0'; // null-terminate included file path
-
-    current_file_name = yr_compiler_get_current_file_name(compiler);
-
-    if (current_file_name == NULL ||
-        compiler->include_callback != _yr_compiler_default_include_callback ||
-        is_absolute_path(yyextra->lex_buf))
-    {
-      include_path = yyextra->lex_buf;
-    }
-    else
-    {
-      strlcpy(buffer, current_file_name, sizeof(buffer));
-      s = strrchr(buffer, '/');
-
-      #ifdef _MSC_VER
-      b = strrchr(buffer, '\\'); // in Windows both path delimiters are accepted
-      #endif
-
-      #ifdef _MSC_VER
-      if (s != NULL || b != NULL)
-      #else
-      if (s != NULL)
-      #endif
-      {
-        #ifdef _MSC_VER
-        f = (b > s) ? (b + 1) : (s + 1);
-        #else
-        f = s + 1;
-        #endif
-
-        strlcpy(f, yyextra->lex_buf, sizeof(buffer) - (f - buffer));
-        include_path = buffer;
-      }
-      else
-      {
-        include_path = yyextra->lex_buf;
-      }
-    }
-
-    included_rules = compiler->include_callback(
-        include_path,
-        current_file_name,
-        compiler->current_namespace->name,
-        compiler->incl_clbk_user_data);
-
-    if (included_rules != NULL)
-    {
-      int error_code = _yr_compiler_push_file_name(compiler, include_path);
-
-      if (error_code != ERROR_SUCCESS)
-      {
-        if (error_code == ERROR_INCLUDES_CIRCULAR_REFERENCE)
-        {
-          yyerror(yyscanner, compiler, "includes circular reference");
-        }
-        else if (error_code == ERROR_INCLUDE_DEPTH_EXCEEDED)
-        {
-          yyerror(yyscanner, compiler, "includes depth exceeded");
-        }
-
-        if (compiler->include_free != NULL)
-        {
-          compiler->include_free(included_rules, compiler->incl_clbk_user_data);
-        }
-
-        yyterminate();
-      }
-
-      // Workaround for flex issue: https://github.com/westes/flex/issues/58
-      yypush_buffer_state(YY_CURRENT_BUFFER, yyscanner);
-      yy_scan_string(included_rules, yyscanner);
-      yyset_lineno(1, yyscanner);
-
-      if (compiler->include_free != NULL)
-      {
-        compiler->include_free(included_rules, compiler->incl_clbk_user_data);
-      }
-    }
-    else
-    {
-      char* err_msg_fmt;
-      char err_msg[512];
-
-      if (compiler->include_callback == _yr_compiler_default_include_callback)
-      {
-        err_msg_fmt = "can't open include file: %s";
-      }
-      else
-      {
-        err_msg_fmt = "callback failed to provide include resource: %s";
-      }
-
-      snprintf(
-          err_msg,
-          sizeof(err_msg),
-          err_msg_fmt,
-          yyextra->lex_buf);
-
-      yyerror(yyscanner, compiler, err_msg);
-    }
-
-  }
-  else // not allowing includes
-  {
-    yyerror(yyscanner, compiler, "includes are disabled");
-  }
-
-  BEGIN(INITIAL);
-}
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-case YY_STATE_EOF(str):
-case YY_STATE_EOF(regexp):
-case YY_STATE_EOF(include):
-case YY_STATE_EOF(comment):
-#line 349 "lexer.l"
-{
-
-  yypop_buffer_state(yyscanner);
-
-  if (!YY_CURRENT_BUFFER)
-    yyterminate();
-
-  return _END_OF_INCLUDED_FILE_;
-}
-	YY_BREAK
-case 45:
-YY_RULE_SETUP
-#line 360 "lexer.l"
-{
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-    error(ERROR_INSUFFICIENT_MEMORY);
-
-  return _STRING_IDENTIFIER_WITH_WILDCARD_;
-}
-	YY_BREAK
-case 46:
-YY_RULE_SETUP
-#line 371 "lexer.l"
-{
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-    error(ERROR_INSUFFICIENT_MEMORY);
-
-  return _STRING_IDENTIFIER_;
-}
-	YY_BREAK
-case 47:
-YY_RULE_SETUP
-#line 382 "lexer.l"
-{
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-  {
-    error(ERROR_INSUFFICIENT_MEMORY);
-  }
-  else
-  {
-    yylval->c_string[0] = '$'; /* replace # by $*/
-  }
-
-  return _STRING_COUNT_;
-}
-	YY_BREAK
-case 48:
-YY_RULE_SETUP
-#line 399 "lexer.l"
-{
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-  {
-    error(ERROR_INSUFFICIENT_MEMORY);
-  }
-  else
-  {
-    yylval->c_string[0] = '$'; /* replace @ by $*/
-  }
-
-  return _STRING_OFFSET_;
-}
-	YY_BREAK
-case 49:
-YY_RULE_SETUP
-#line 416 "lexer.l"
-{
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-  {
-    error(ERROR_INSUFFICIENT_MEMORY);
-  }
-  else
-  {
-    yylval->c_string[0] = '$'; /* replace ! by $*/
-  }
-
-  return _STRING_LENGTH_;
-}
-	YY_BREAK
-case 50:
-YY_RULE_SETUP
-#line 433 "lexer.l"
-{
-
-  char* text = yytext;
-
-  if (*text == 'u')
-  {
-    yylval->integer = 3;
-    text++;
-  }
-  else
-  {
-    yylval->integer = 0;
-  }
-
-  if (strstr(text, "int8") == text)
-  {
-    yylval->integer += 0;
-    text += 4;
-  }
-  else if (strstr(text, "int16") == text)
-  {
-    yylval->integer += 1;
-    text += 5;
-  }
-  else if (strstr(text, "int32") == text)
-  {
-    yylval->integer += 2;
-    text += 5;
-  }
-
-  if (strcmp(text, "be") == 0)
-  {
-    yylval->integer += 6;
-  }
-
-  return _INTEGER_FUNCTION_;
-}
-	YY_BREAK
-case 51:
-YY_RULE_SETUP
-#line 472 "lexer.l"
-{
-
-  if (strlen(yytext) > 128)
-    syntax_error("identifier too long");
-
-  yylval->c_string = yr_strdup(yytext);
-
-  if (yylval->c_string == NULL)
-    error(ERROR_INSUFFICIENT_MEMORY);
-
-  return _IDENTIFIER_;
-}
-	YY_BREAK
-case 52:
-YY_RULE_SETUP
-#line 486 "lexer.l"
-{
-
-  char *endptr;
-
-  errno = 0;
-  yylval->integer = strtoll(yytext, &endptr, 10);
-
-  if (yylval->integer == LLONG_MAX && errno == ERANGE)
-  {
-    yr_compiler_set_error_extra_info(compiler, yytext);
-    error(ERROR_INTEGER_OVERFLOW);
-  }
-  else if (strstr(yytext, "KB") != NULL)
-  {
-    if (yylval->integer > LLONG_MAX / 1024)
-    {
-      yr_compiler_set_error_extra_info(compiler, yytext);
-      error(ERROR_INTEGER_OVERFLOW);
-    }
-    else
-    {
-      yylval->integer *= 1024;
-    }
-  }
-  else if (strstr(yytext, "MB") != NULL)
-  {
-    if (yylval->integer > LLONG_MAX / 1048576)
-    {
-      yr_compiler_set_error_extra_info(compiler, yytext);
-      error(ERROR_INTEGER_OVERFLOW);
-    }
-    else
-    {
-      yylval->integer *= 1048576;
-    }
-  }
-
-  return _NUMBER_;
-}
-	YY_BREAK
-case 53:
-YY_RULE_SETUP
-#line 526 "lexer.l"
-{
-  yylval->double_ = atof(yytext);
-  return _DOUBLE_;
-}
-	YY_BREAK
-case 54:
-YY_RULE_SETUP
-#line 531 "lexer.l"
-{
-
-  char *endptr;
-
-  errno = 0;
-  yylval->integer = strtoll(yytext, &endptr, 16);
-
-  if (yylval->integer == LLONG_MAX && errno == ERANGE)
-  {
-    yr_compiler_set_error_extra_info(compiler, yytext);
-    error(ERROR_INTEGER_OVERFLOW);
-  }
-
-  return _NUMBER_;
-}
-	YY_BREAK
-case 55:
-YY_RULE_SETUP
-#line 547 "lexer.l"
-{
-
-  char *endptr;
-
-  errno = 0;
-  yylval->integer = strtoll(yytext + 2, &endptr, 8);
-
-  if (yylval->integer == LLONG_MAX && errno == ERANGE)
-  {
-    yr_compiler_set_error_extra_info(compiler, yytext);
-    error(ERROR_INTEGER_OVERFLOW);
-  }
-
-  return _NUMBER_;
-}
-	YY_BREAK
-case 56:
-YY_RULE_SETUP
-#line 564 "lexer.l"
-{     /* saw closing quote - all done */
-
-  alloc_sized_string(s, yyextra->lex_buf_len);
-
-  *yyextra->lex_buf_ptr = '\0';
-  memcpy(s->c_string, yyextra->lex_buf, yyextra->lex_buf_len + 1);
-  yylval->sized_string = s;
-
-  BEGIN(INITIAL);
-
-  return _TEXT_STRING_;
-}
-	YY_BREAK
-case 57:
-YY_RULE_SETUP
-#line 578 "lexer.l"
-{
-
-  lex_check_space_ok("\t", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-  *yyextra->lex_buf_ptr++ = '\t';
-  yyextra->lex_buf_len++;
-}
-	YY_BREAK
-case 58:
-YY_RULE_SETUP
-#line 586 "lexer.l"
-{
-
-  lex_check_space_ok("\n", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-  *yyextra->lex_buf_ptr++ = '\n';
-  yyextra->lex_buf_len++;
-}
-	YY_BREAK
-case 59:
-YY_RULE_SETUP
-#line 594 "lexer.l"
-{
-
-  lex_check_space_ok("\"", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-  *yyextra->lex_buf_ptr++ = '\"';
-  yyextra->lex_buf_len++;
-}
-	YY_BREAK
-case 60:
-YY_RULE_SETUP
-#line 602 "lexer.l"
-{
-
-  lex_check_space_ok("\\", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-  *yyextra->lex_buf_ptr++ = '\\';
-  yyextra->lex_buf_len++;
-}
-	YY_BREAK
-case 61:
-YY_RULE_SETUP
-#line 610 "lexer.l"
-{
-
-   int result;
-
-   sscanf( yytext + 2, "%x", &result );
-   lex_check_space_ok("X", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-   *yyextra->lex_buf_ptr++ = result;
-   yyextra->lex_buf_len++;
-}
-	YY_BREAK
-case 62:
-YY_RULE_SETUP
-#line 621 "lexer.l"
-{ yytext_to_buffer; }
-	YY_BREAK
-case 63:
-/* rule 63 can match eol */
-YY_RULE_SETUP
-#line 624 "lexer.l"
-{
-  syntax_error("unterminated string");
-}
-	YY_BREAK
-case 64:
-/* rule 64 can match eol */
-YY_RULE_SETUP
-#line 629 "lexer.l"
-{
-  syntax_error("illegal escape sequence");
-}
-	YY_BREAK
-case 65:
-YY_RULE_SETUP
-#line 634 "lexer.l"
-{
-
-  if (yyextra->lex_buf_len > 0)
-  {
-    alloc_sized_string(s, yyextra->lex_buf_len);
-
-    if (yytext[1] == 'i')
-      s->flags |= SIZED_STRING_FLAGS_NO_CASE;
-
-    if (yytext[1] == 's' || yytext[2] == 's')
-      s->flags |= SIZED_STRING_FLAGS_DOT_ALL;
-
-    *yyextra->lex_buf_ptr = '\0';
-    strlcpy(s->c_string, yyextra->lex_buf, s->length + 1);
-    yylval->sized_string = s;
-  }
-  else
-  {
-    syntax_error("empty regular expression");
-  }
-
-  BEGIN(INITIAL);
-  return _REGEXP_;
-}
-	YY_BREAK
-case 66:
-YY_RULE_SETUP
-#line 660 "lexer.l"
-{
-
-  lex_check_space_ok("/", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-  *yyextra->lex_buf_ptr++ = '/';
-  yyextra->lex_buf_len++ ;
-}
-	YY_BREAK
-case 67:
-YY_RULE_SETUP
-#line 668 "lexer.l"
-{
-
-  lex_check_space_ok("\\.", yyextra->lex_buf_len, YR_LEX_BUF_SIZE);
-
-  if (yytext[1] == 0)
-    syntax_error("malformed regular expression");
-
-  *yyextra->lex_buf_ptr++ = yytext[0];
-  *yyextra->lex_buf_ptr++ = yytext[1];
-  yyextra->lex_buf_len += 2;
-}
-	YY_BREAK
-case 68:
-YY_RULE_SETUP
-#line 681 "lexer.l"
-{ yytext_to_buffer; }
-	YY_BREAK
-case 69:
-/* rule 69 can match eol */
-YY_RULE_SETUP
-#line 684 "lexer.l"
-{
-  syntax_error("unterminated regular expression");
-}
-	YY_BREAK
-case 70:
-YY_RULE_SETUP
-#line 689 "lexer.l"
-{
-
-  yylval->sized_string = NULL;
-  yyextra->lex_buf_ptr = yyextra->lex_buf;
-  yyextra->lex_buf_len = 0;
-  BEGIN(str);
-}
-	YY_BREAK
-case 71:
-YY_RULE_SETUP
-#line 698 "lexer.l"
-{
-
-  yylval->sized_string = NULL;
-  yyextra->lex_buf_ptr = yyextra->lex_buf;
-  yyextra->lex_buf_len = 0;
-  BEGIN(regexp);
-}
-	YY_BREAK
-case 72:
-/* rule 72 can match eol */
-YY_RULE_SETUP
-#line 707 "lexer.l"
-{
-  // Match hex-digits with whitespace or comments. The latter are stripped
-  // out by hex_lexer.l
-
-  alloc_sized_string(s, strlen(yytext));
-
-  strlcpy(s->c_string, yytext, s->length + 1);
-  yylval->sized_string = s;
-
-  return _HEX_STRING_;
-}
-	YY_BREAK
-case 73:
-/* rule 73 can match eol */
-YY_RULE_SETUP
-#line 720 "lexer.l"
-/* skip whitespace */
-	YY_BREAK
-case 74:
-YY_RULE_SETUP
-#line 722 "lexer.l"
-{
-
-  if (yytext[0] >= 32 && yytext[0] < 127)
-  {
-    return yytext[0];
-  }
-  else
-  {
-    syntax_error("non-ascii character");
-  }
-}
-	YY_BREAK
-case 75:
-YY_RULE_SETUP
-#line 734 "lexer.l"
+#line 171 "hex_lexer.l"
 ECHO;
 	YY_BREAK
-#line 2196 "lexer.c"
+#line 1230 "lex.yyhex_lexer.c"
+case YY_STATE_EOF(INITIAL):
+case YY_STATE_EOF(comment):
+case YY_STATE_EOF(range):
+	yyterminate();
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2490,7 +1528,7 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 248 )
+			if ( yy_current_state >= 35 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -2519,11 +1557,11 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 248 )
+		if ( yy_current_state >= 35 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 247);
+	yy_is_jam = (yy_current_state == 34);
 
 	(void)yyg;
 	return yy_is_jam ? 0 : yy_current_state;
@@ -3341,229 +2379,87 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 734 "lexer.l"
-
-
-
-void yywarning(
-    yyscan_t yyscanner,
-    const char *message_fmt,
-    ...)
-{
-  YR_COMPILER* compiler = yyget_extra(yyscanner);
-
-  char* file_name;
-  char message[512];
-  va_list message_args;
-
-  if (compiler->callback == NULL)
-    return;
-
-  va_start(message_args, message_fmt);
-
-  if (compiler->file_name_stack_ptr > 0)
-    file_name = compiler->file_name_stack[compiler->file_name_stack_ptr - 1];
-  else
-    file_name = NULL;
-
-  vsnprintf(message, sizeof(message), message_fmt, message_args);
-
-  compiler->callback(
-      YARA_ERROR_LEVEL_WARNING,
-      file_name,
-      compiler->current_line ? compiler->current_line : yyget_lineno(yyscanner),
-      message,
-      compiler->user_data);
-
-  va_end(message_args);
-}
+#line 171 "hex_lexer.l"
 
 
 void yyfatal(
     yyscan_t yyscanner,
     const char *error_message)
 {
-  YR_COMPILER* compiler = yyget_extra(yyscanner);
+  jmp_buf* recovery_state = (jmp_buf*) yr_thread_storage_get_value(
+      &yr_recovery_state_key);
 
-  yyerror(yyscanner, compiler, error_message);
-  longjmp(compiler->error_recovery, 1);
+  longjmp(*recovery_state, 1);
 }
-
 
 void yyerror(
     yyscan_t yyscanner,
-    YR_COMPILER* compiler,
+    HEX_LEX_ENVIRONMENT* lex_env,
     const char *error_message)
 {
-  char message[512] = {'\0'};
-  char* file_name = NULL;
+  // if lex_env->last_error was set to some error code before
+  // don't overwrite it, we are interested in the first error, not in
+  // subsequent errors like "syntax error, unexpected $end" caused by
+  // early parser termination.
 
-  /*
-    if error_message != NULL the error comes from yyparse internal code
-    else the error comes from my code and the error code is set in
-    compiler->last_error
-  */
-
-  compiler->errors++;
-
-  if (compiler->current_line != 0)
-    compiler->last_error_line = compiler->current_line;
-  else
-    compiler->last_error_line = yyget_lineno(yyscanner);
-
-  compiler->current_line = 0;
-
-  if (compiler->file_name_stack_ptr > 0)
+  if (lex_env->last_error == ERROR_SUCCESS)
   {
-    file_name = compiler->file_name_stack[compiler->file_name_stack_ptr - 1];
-  }
-  else
-  {
-    file_name = NULL;
-  }
+    lex_env->last_error = ERROR_INVALID_HEX_STRING;
 
-  if (error_message != NULL)
-  {
-    yr_compiler_set_error_extra_info(compiler, error_message);
-    compiler->last_error = ERROR_SYNTAX_ERROR;
-
-    if (compiler->callback != NULL)
-    {
-      compiler->callback(
-          YARA_ERROR_LEVEL_ERROR,
-          file_name,
-          compiler->last_error_line,
-          error_message,
-          compiler->user_data);
-    }
-  }
-  else if (compiler->callback != NULL)
-  {
-    yr_compiler_get_error_message(compiler, message, sizeof(message));
-
-    compiler->callback(
-      YARA_ERROR_LEVEL_ERROR,
-      file_name,
-      compiler->last_error_line,
-      message,
-      compiler->user_data);
+    strlcpy(
+        lex_env->last_error_message,
+        error_message,
+        sizeof(lex_env->last_error_message));
   }
 }
 
 
-int yr_lex_parse_rules_string(
-    const char* rules_string,
-    YR_COMPILER* compiler)
+int yr_parse_hex_string(
+    const char* hex_string,
+    RE_AST** re_ast,
+    RE_ERROR* error)
 {
   yyscan_t yyscanner;
+  jmp_buf recovery_state;
+  HEX_LEX_ENVIRONMENT lex_env;
 
-  compiler->errors = 0;
+  lex_env.last_error = ERROR_SUCCESS;
+  lex_env.inside_or = 0;
 
-  if (setjmp(compiler->error_recovery) != 0)
-    return compiler->errors;
+  yr_thread_storage_set_value(&yr_recovery_state_key, &recovery_state);
 
-  yylex_init(&yyscanner);
+  if (setjmp(recovery_state) != 0)
+    return ERROR_INTERNAL_FATAL_ERROR;
 
-  #if YYDEBUG
-  yydebug = 1;
-  #endif
+  FAIL_ON_ERROR(yr_re_ast_create(re_ast));
 
-  yyset_extra(compiler, yyscanner);
-  yy_scan_string(rules_string, yyscanner);
-  yyset_lineno(1, yyscanner);
-  yyparse(yyscanner, compiler);
-  yylex_destroy(yyscanner);
+  // The RE_FLAGS_FAST_REGEXP flag indicates a regular expression can be
+  // matched by faster algorithm. These regular expressions come from hex
+  // strings that do not contain alternatives, like in:
+  //
+  // { ( 01 02 | 03 04) 05 06 }.
+  //
+  // This flag is unset later during parsing if alternatives are used.
 
-  return compiler->errors;
-}
+  (*re_ast)->flags |= RE_FLAGS_FAST_REGEXP;
 
+  // Set RE_FLAGS_DOT_ALL because in hex strings the "dot" (?? in this case)
+  // must match all characters including new-line.
 
-int yr_lex_parse_rules_file(
-    FILE* rules_file,
-    YR_COMPILER* compiler)
-{
-  yyscan_t yyscanner;
-
-  compiler->errors = 0;
-
-  if (setjmp(compiler->error_recovery) != 0)
-    return compiler->errors;
+  (*re_ast)->flags |= RE_FLAGS_DOT_ALL;
 
   yylex_init(&yyscanner);
-
-  #if YYDEBUG
-  yydebug = 1;
-  #endif
-
-  yyset_in(rules_file, yyscanner);
-  yyset_extra(compiler, yyscanner);
-  yyparse(yyscanner, compiler);
+  yyset_extra(*re_ast, yyscanner);
+  yy_scan_string(hex_string, yyscanner);
+  yyparse(yyscanner, &lex_env);
   yylex_destroy(yyscanner);
 
-  return compiler->errors;
-}
-
-
-int yr_lex_parse_rules_fd(
-    YR_FILE_DESCRIPTOR rules_fd,
-    YR_COMPILER* compiler)
-{
-  yyscan_t yyscanner;
-  size_t file_size;
-  void* buffer;
-
-  compiler->errors = 0;
-
-  if (setjmp(compiler->error_recovery) != 0)
-    return compiler->errors;
-
-  #if defined(_WIN32) || defined(__CYGWIN__)
-  file_size = (size_t) GetFileSize(rules_fd, NULL);
-  #else
-  struct stat fs;
-  if (fstat(rules_fd, &fs) != 0)
+  if (lex_env.last_error != ERROR_SUCCESS)
   {
-    compiler->errors = 1;
-    compiler->last_error = ERROR_COULD_NOT_READ_FILE;
-    return compiler->errors;
-  }
-  file_size = (size_t) fs.st_size;
-  #endif
-
-  buffer = yr_malloc(file_size);
-
-  if (buffer == NULL)
-  {
-    compiler->errors = 1;
-    compiler->last_error = ERROR_INSUFFICIENT_MEMORY;
-    return compiler->errors;
+    strlcpy(error->message, lex_env.last_error_message, sizeof(error->message));
+    return lex_env.last_error;
   }
 
-  #if defined(_WIN32) || defined(__CYGWIN__)
-  if (!ReadFile(rules_fd, buffer, file_size, NULL, NULL))
-  #else
-  if (read(rules_fd, buffer, file_size) != file_size)
-  #endif
-  {
-    yr_free(buffer);
-    compiler->errors = 1;
-    compiler->last_error = ERROR_COULD_NOT_READ_FILE;
-    return compiler->errors;
-  }
-
-  yylex_init(&yyscanner);
-
-  #if YYDEBUG
-  yydebug = 1;
-  #endif
-
-  yyset_extra(compiler, yyscanner);
-  yy_scan_bytes((const char*) buffer, file_size, yyscanner);
-  yyparse(yyscanner, compiler);
-  yylex_destroy(yyscanner);
-
-  yr_free(buffer);
-
-  return compiler->errors;
+  return ERROR_SUCCESS;
 }
 

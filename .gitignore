@@ -1,3 +1,10 @@
+.vscode
+.gdb_history
+my_first_rule
+my_second_rule
+sample.bat
+
+
 # Generic auto-generated build files
 *~
 *.a

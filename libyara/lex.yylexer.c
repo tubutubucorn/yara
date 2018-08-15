@@ -1,6 +1,6 @@
-#line 2 "lexer.c"
+#line 2 "lex.yylexer.c"
 
-#line 4 "lexer.c"
+#line 4 "lex.yylexer.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -331,7 +331,7 @@ typedef unsigned int flex_uint32_t;
 /* Promotes a possibly negative, possibly signed char to an
  *   integer in range [0..255] for use as an array index.
  */
-#define YY_SC_TO_UI(c) ((YY_CHAR) (c))
+#define YY_SC_TO_UI(c) ((YYLEXER_CHAR) (c))
 
 /* An opaque pointer. */
 #ifndef YY_TYPEDEF_YY_SCANNER_T
@@ -346,8 +346,8 @@ typedef void* yyscan_t;
 #define yyextra yyg->yyextra_r
 #define yyleng yyg->yyleng_r
 #define yytext yyg->yytext_r
-#define yylineno (YY_CURRENT_BUFFER_LVALUE->yy_bs_lineno)
-#define yycolumn (YY_CURRENT_BUFFER_LVALUE->yy_bs_column)
+#define yylineno (YYLEXER_CURRENT_BUFFER_LVALUE->yy_bs_lineno)
+#define yycolumn (YYLEXER_CURRENT_BUFFER_LVALUE->yy_bs_column)
 #define yy_flex_debug yyg->yy_flex_debug_r
 
 /* Enter a start condition.  This macro really ought to take a parameter,
@@ -365,7 +365,7 @@ typedef void* yyscan_t;
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 /* Special action meaning "start processing a new file". */
 #define YY_NEW_FILE yyrestart( yyin , yyscanner )
-#define YY_END_OF_BUFFER_CHAR 0
+#define YY_END_OF_BUFFERLEXER_CHAR 0
 
 /* Size of default input buffer. */
 #ifndef YY_BUF_SIZE
@@ -394,7 +394,7 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-#define EOB_ACT_CONTINUE_SCAN 0
+#define EOB_ACTLEXER_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
 #define EOB_ACT_LAST_MATCH 2
     
@@ -506,13 +506,13 @@ struct yy_buffer_state
  *
  * Returns the top of the stack, or NULL.
  */
-#define YY_CURRENT_BUFFER ( yyg->yy_buffer_stack \
+#define YYLEXER_CURRENT_BUFFER ( yyg->yy_buffer_stack \
                           ? yyg->yy_buffer_stack[yyg->yy_buffer_stack_top] \
                           : NULL)
 /* Same as previous macro, but useful when we know that the buffer stack is not
  * NULL or when we need an lvalue. For internal use only.
  */
-#define YY_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
+#define YYLEXER_CURRENT_BUFFER_LVALUE yyg->yy_buffer_stack[yyg->yy_buffer_stack_top]
 
 void yyrestart ( FILE *input_file , yyscan_t yyscanner );
 void yy_switch_to_buffer ( YY_BUFFER_STATE new_buffer , yyscan_t yyscanner );
@@ -525,7 +525,7 @@ void yypop_buffer_state ( yyscan_t yyscanner );
 static void yyensure_buffer_stack ( yyscan_t yyscanner );
 static void yy_load_buffer_state ( yyscan_t yyscanner );
 static void yy_init_buffer ( YY_BUFFER_STATE b, FILE *file , yyscan_t yyscanner );
-#define YY_FLUSH_BUFFER yy_flush_buffer( YY_CURRENT_BUFFER , yyscanner)
+#define YY_FLUSH_BUFFER yy_flush_buffer( YYLEXER_CURRENT_BUFFER , yyscanner)
 
 YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size , yyscan_t yyscanner );
 YY_BUFFER_STATE yy_scan_string ( const char *yy_str , yyscan_t yyscanner );
@@ -554,7 +554,7 @@ void yyfree ( void * , yyscan_t yyscanner );
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
-#define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
+#define YY_AT_BOL() (YYLEXER_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
 
@@ -945,7 +945,7 @@ with noyywrap then we can remove this pragma.
 #include <string.h>
 #include <setjmp.h>
 
-#if defined(_WIN32) || defined(__CYGWIN__)
+#if defined(_WIN32) || defined(_LEXER_CYGWIN__)
 #include <windows.h>
 #else
 #include <sys/stat.h>
@@ -1029,11 +1029,11 @@ static bool is_absolute_path(
   #endif
 }
 
-#line 1033 "lexer.c"
+#line 1033 "lex.yylexer.c"
 #define YY_NO_UNISTD_H 1
 #define YY_NO_INPUT 1
 
-#line 1037 "lexer.c"
+#line 1037 "lex.yylexer.c"
 
 #define INITIAL 0
 #define str 1
@@ -1312,7 +1312,7 @@ YY_DECL
 #line 163 "lexer.l"
 
 
-#line 1316 "lexer.c"
+#line 1316 "lex.yylexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2192,7 +2192,7 @@ YY_RULE_SETUP
 #line 734 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 2196 "lexer.c"
+#line 2196 "lex.yylexer.c"
 
 	case YY_END_OF_BUFFER:
 		{
