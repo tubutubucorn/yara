@@ -98,16 +98,15 @@ static int _yr_scanner_scan_mem_block(
       i = block->size;
     }
   }
-  else
+  else if(rlength >= 1)
   {
     int table[256];
-    for(int c=0;c<255;c++){
+    for(int c=0; c<255; c++){
       table[c] = CHAR_IN_CLASS(rclass->bitmap, c);
     }
   
     while (i + rlength < block->size)
     {
-      //if (CHAR_IN_CLASS(rclass->bitmap, block_data[i + rlength - 1]))
       if(table[block_data[i+rlength-1]])
       {
         break;
