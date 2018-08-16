@@ -270,6 +270,7 @@ struct YR_STRING
 
   uint32_t re_length;
   RE_CLASS *re_alphabet;
+  char *keyword;
 };
 
 struct YR_RULE
