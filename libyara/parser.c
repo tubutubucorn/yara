@@ -49,6 +49,209 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define todigit(x) ((x) >= 'A' && (x) <= 'F') ? ((uint8_t)(x - 'A' + 10)) : ((uint8_t)(x - '0'))
 
+#define KWLEN 32
+typedef struct kwlist
+{
+  char *list[KWLEN];
+} kwlist;
+
+typedef struct kwmust
+{
+  char *left;
+  char *right;
+  char *is;
+  kwlist in;
+} kwmust;
+
+kwmust *kwmust_new()
+{
+  kwmust *k = (kwmust *)malloc(sizeof(kwmust));
+  k->left = "";
+  k->right = "";
+  k->is = NULL;
+  return k;
+}
+
+kwlist *
+kwlist_new()
+{
+  kwlist *k = (kwlist *)malloc(sizeof(kwlist));
+  for (int i = 0; i < KWLEN; i++)
+  {
+    k->list[i] = NULL;
+  }
+  return k;
+}
+
+void kwlist_delete(kwlist *k)
+{
+  for (int i = 0; i < KWLEN; i++)
+  {
+    free(k->list[i]);
+  }
+  free(k);
+  return;
+}
+
+static void _kwlist_insert(kwlist *k, char *str, int len)
+{
+  int nullindex = -1;
+
+  for (int i = 0; i < KWLEN; i++)
+  {
+    if (k->list[i] == NULL)
+    {
+      nullindex = i;
+      continue;
+    }
+
+    int ilen = strlen(k->list[i]);
+    // `str`が`k->list[i]`の部分文字列だった場合は追加する必要がないので`return`。
+    if (memmem(k->list[i], ilen, str, len) != NULL)
+      return;
+    // `k->list[i]`が`str`の部分文字列だった場合、`str`で置き換えられるので`k->list[i]`を削除。
+    if (memmem(str, len, k->list[i], ilen) != NULL)
+    {
+      free(k->list[i]);
+      k->list[i] = NULL;
+      nullindex = i;
+    }
+  }
+
+  // 空いているところに`str`を追加する。
+  if (nullindex != -1)
+  {
+    k->list[nullindex] = (char *)malloc(len + 1);
+    memcpy(k->list[nullindex], str, len);
+    k->list[nullindex][len] = '\0';
+  }
+}
+
+void kwlist_insert(kwlist *k, char *str)
+{
+  _kwlist_insert(k, str, strlen(str));
+}
+
+int kwlist_in(kwlist *k, char *str)
+{
+  for (int i = 0; i < KWLEN; i++)
+  {
+    if (k->list[i] != NULL && strstr(k->list[i], str) != NULL)
+      return 1;
+  }
+  return 0;
+}
+
+void kwlist_trim(kwlist *k)
+{
+  int delindex[KWLEN];
+  for (int i = 0; i < KWLEN; i++)
+    delindex[i] = 0;
+  for (int i = 0; i < KWLEN; i++)
+  {
+    if (k->list[i] == NULL)
+      continue;
+    int ilen = strlen(k->list[i]);
+    for (int j = i; j < KWLEN; j++)
+    {
+      if (k->list[j] == NULL)
+        continue;
+      int jlen = strlen(k->list[j]);
+      if (ilen < jlen)
+      {
+        for (int l = 0; ilen + l <= jlen; l++)
+        {
+          if (strncmp(k->list[i], k->list[j] + l, ilen) == 0)
+          {
+            delindex[i] = 1;
+            continue;
+          }
+        }
+      }
+      else if (ilen > jlen)
+      {
+        for (int l = 0; jlen + l <= ilen; l++)
+        {
+          if (strncmp(k->list[i] + l, k->list[j], jlen) == 0)
+          {
+            delindex[i] = 1;
+            continue;
+          }
+        }
+      }
+    }
+  }
+  for (int i = 0; i < KWLEN; i++)
+  {
+    if (delindex[i])
+    {
+      free(k->list[i]);
+      k->list[i] = NULL;
+    }
+  }
+}
+
+kwlist *kwlist_merge(kwlist *k1, kwlist *k2)
+{
+  kwlist *result = kwlist_new();
+
+  for (int i = 0; i < KWLEN; i++)
+  {
+    if (k1->list[i] == NULL)
+      continue;
+    for (int j = 0; j < KWLEN; j++)
+    {
+      if (k2->list[j] == NULL)
+        continue;
+
+      char *astr = k1->list[i];
+      char *bstr = k2->list[j];
+      int alen = strlen(astr);
+      int blen = strlen(bstr);
+
+      if (alen > blen)
+      {
+        char *cstr = astr;
+        int clen = alen;
+        astr = bstr;
+        alen = blen;
+        bstr = cstr;
+        clen = clen;
+      }
+
+      for (int l = alen; l > 0; l--)
+      {
+        for (int m = 0; m + l <= alen; m++)
+        {
+          if (memmem(bstr, blen, astr + m, l) != NULL)
+          {
+            _kwlist_insert(result, astr + m, l);
+          }
+        }
+      }
+    }
+  }
+
+  return result;
+}
+
+//
+kwmust *re_kwmust(RE_NODE *node, kwmust *k)
+{
+  RE_NODE *right;
+  RE_NODE *left;
+
+  right = node->right;
+  left = node->left;
+
+  switch (node->type)
+  {
+  case RE_NODE_LITERAL:
+    k->left = k->right = k->is = node->value;
+    kw_insert(&(k->in), k->value);
+  }
+}
+
 // return minimam regex length
 uint32_t re_len(RE_NODE *node)
 {
