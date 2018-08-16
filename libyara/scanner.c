@@ -57,6 +57,29 @@ static int _yr_scanner_scan_mem_block(
   uint32_t state = YR_AC_ROOT_STATE;
   uint16_t index;
 
+  // rlength=正規表現の長さ, rclass=正規表現の集合の元(bitmap)
+  uint32_t rlength = scanner->rules->rules_list_head->strings->re_length;
+  RE_CLASS *rclass = scanner->rules->rules_list_head->strings->re_alphabet;
+
+  // test code
+  /*uint32_t rlength = 3;
+  RE_CLASS rclass_;
+  RE_CLASS *rclass = &rclass_;
+
+  for(j=0;j<=31;j++){
+    if(j==12){
+      rclass->bitmap[j] = 0x1e;
+    }else{
+      rclass->bitmap[j] = 0x00;
+    }
+  }*/
+  while (i+rlength < block->size){
+    if(CHAR_IN_CLASS(rclass->bitmap,block_data[i+rlength-1])){
+      break;
+    }
+    i+=rlength;
+  }
+
   while (i < block->size)
   {
     match = match_table[state].match;
