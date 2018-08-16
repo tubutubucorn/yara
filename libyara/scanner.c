@@ -40,6 +40,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "exception.h"
 
+#define CHAR_IN_CLASS(cls, chr) \
+  ((cls)[(chr) / 8] & 1 << ((chr) % 8))
+
 /*QR 関数　、*/
 
 void preQsBc(char *x, int m, int qsBc[])
