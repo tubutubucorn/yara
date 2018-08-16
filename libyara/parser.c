@@ -736,7 +736,6 @@ int yr_parser_reduce_string_declaration(
     {
       //calc minimam length
       (*string)->re_length = re_len(re_ast->root_node);
-      printf("length: %d\n", (*string)->re_length);
 
       // print alph_set
       if ((*string)->re_alphabet == NULL)
@@ -744,18 +743,8 @@ int yr_parser_reduce_string_declaration(
         (*string)->re_alphabet = (RE_CLASS *)yr_malloc(sizeof(RE_CLASS));
         memset((*string)->re_alphabet->bitmap, 0, 32);
         re_alph(re_ast->root_node, (*string)->re_alphabet->bitmap);
-        for (int i = 0; i < 256; i++)
-        {
-          if (CHAR_IN_CLASS((*string)->re_alphabet->bitmap, i) != 0)
-          {
-            printf("%d ", i);
-          }
-        }
-        printf("\n");
       }
     }
-    //yr_re_ast_print(re_ast);
-    printf("\n");
 
     if (remainder_re_ast != NULL)
     {
