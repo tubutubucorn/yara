@@ -20,7 +20,7 @@ rule UPX : Packer
 	$r15 = /\d/
 
     condition:
-        $re3
+        $re3 or $re4 or $re5 or $re6 or $re7 or $re8 or $re9 or $re10 or $re11 or $re12 or $re13 or $re14 or $re15
         
 }
 
