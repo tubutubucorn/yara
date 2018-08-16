@@ -4,7 +4,7 @@ rule Alt
     auther = "toishi"
 
   strings:
-    $re1 = /a|(ab)/
+    $re1 = /(abc*df)(bcd|bad)(a*ff)/
 
   condition:
     $re1

@@ -298,7 +298,13 @@ kwmust *re_kwmust(RE_NODE *node)
     }
 
     // in
-    k->in = kwlist_merge(kleft->in, kright->in);
+    for (int i = 0; i < KWLEN; i++)
+    {
+      if (kleft->in->list[i] != NULL)
+        kwlist_insert(k->in, kleft->in->list[i]);
+      if (kright->in->list[i] != NULL)
+        kwlist_insert(k->in, kright->in->list[i]);
+    }
     char *cat = malloc((strlen(kleft->right) + strlen(kright->left)) * sizeof(char));
     strcpy(cat, kleft->right);
     kwlist_insert(k->in, strcat(cat, kright->left));
