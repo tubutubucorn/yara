@@ -1,0 +1,11 @@
+rule Literal
+{
+  meta:
+    auther = "toishi"
+
+  strings:
+    $re1 = /a/
+
+  condition:
+    $re1
+}

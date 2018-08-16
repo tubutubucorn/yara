@@ -1,0 +1,11 @@
+rule Alt
+{
+  meta:
+    auther = "toishi"
+
+  strings:
+    $re1 = /(a|a)/
+
+  condition:
+    $re1
+}

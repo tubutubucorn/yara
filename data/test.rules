@@ -1,0 +1,8 @@
+rule TEST
+{
+  strings:
+    $re1 = /(abc|bcde|abe)/
+
+  condition:
+    $re1
+}

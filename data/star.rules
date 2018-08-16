@@ -1,0 +1,8 @@
+rule STAR
+{
+  strings:
+    $re1 = /a+/
+
+  condition:
+    $re1
+}

@@ -1,0 +1,8 @@
+rule CLASS
+{
+  strings:
+    $re1 = /[abc]/
+
+  condition:
+    $re1
+}
