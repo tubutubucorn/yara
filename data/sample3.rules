@@ -1,0 +1,13 @@
+
+rule UPX : Packer
+{
+    meta:
+	acf = " hoge"
+
+    strings:
+	$re3 = /[ab][cd]*[ef]/
+
+    condition:
+    $re3
+}
+
