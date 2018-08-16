@@ -44,6 +44,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <yara/parser.h>
 #include <yara/mem.h>
 
+#define CHAR_IN_CLASS(cls, chr) \
+  ((cls)[(chr) / 8] & 1 << ((chr) % 8))
+
 #define todigit(x) ((x) >= 'A' && (x) <= 'F') ? ((uint8_t)(x - 'A' + 10)) : ((uint8_t)(x - '0'))
 
 // return minimam regex length
@@ -552,7 +555,6 @@ static int _yr_parser_write_string(
 
   if (free_literal)
     yr_free(literal_string);
-
   if (atom_list != NULL)
     yr_atoms_list_destroy(atom_list);
 
@@ -655,15 +657,6 @@ int yr_parser_reduce_string_declaration(
     else
       result = yr_re_parse(str->c_string, &re_ast, &re_error);
 
-    //calc minimam length
-    (*string)->re_length = re_len(re_ast->root_node);
-    printf("length: %d\n", (*string)->re_length);
-
-    // print alph_set
-    re_alph(re_ast->root_node, (*string)->re_alphabet->bitmap);
-    yr_re_ast_print(re_ast);
-    printf("\n");
-
     if (result != ERROR_SUCCESS)
     {
       snprintf(
@@ -738,6 +731,31 @@ int yr_parser_reduce_string_declaration(
 
     if (result != ERROR_SUCCESS)
       goto _exit;
+
+    if (*string != NULL)
+    {
+      //calc minimam length
+      (*string)->re_length = re_len(re_ast->root_node);
+      printf("length: %d\n", (*string)->re_length);
+
+      // print alph_set
+      if ((*string)->re_alphabet == NULL)
+      {
+        (*string)->re_alphabet = (RE_CLASS *)yr_malloc(sizeof(RE_CLASS));
+        memset((*string)->re_alphabet->bitmap, 0, 32);
+        re_alph(re_ast->root_node, (*string)->re_alphabet->bitmap);
+        for (int i = 0; i < 256; i++)
+        {
+          if (CHAR_IN_CLASS((*string)->re_alphabet->bitmap, i) != 0)
+          {
+            printf("%d ", i);
+          }
+        }
+        printf("\n");
+      }
+    }
+    //yr_re_ast_print(re_ast);
+    printf("\n");
 
     if (remainder_re_ast != NULL)
     {
