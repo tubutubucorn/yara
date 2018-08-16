@@ -60,8 +60,18 @@ typedef struct kwmust
   char *left;
   char *right;
   char *is;
-  kwlist in;
+  kwlist *in;
 } kwmust;
+
+kwlist *kwlist_new()
+{
+  kwlist *k = (kwlist *)malloc(sizeof(kwlist));
+  for (int i = 0; i < KWLEN; i++)
+  {
+    k->list[i] = NULL;
+  }
+  return k;
+}
 
 kwmust *kwmust_new()
 {
@@ -69,17 +79,7 @@ kwmust *kwmust_new()
   k->left = "";
   k->right = "";
   k->is = NULL;
-  return k;
-}
-
-kwlist *
-kwlist_new()
-{
-  kwlist *k = (kwlist *)malloc(sizeof(kwlist));
-  for (int i = 0; i < KWLEN; i++)
-  {
-    k->list[i] = NULL;
-  }
+  k->in = kwlist_new();
   return k;
 }
 
@@ -235,9 +235,9 @@ kwlist *kwlist_merge(kwlist *k1, kwlist *k2)
   return result;
 }
 
-/*
-kwmust *re_kwmust(RE_NODE *node, kwmust *k)
+kwmust *re_kwmust(RE_NODE *node)
 {
+  kwmust *k = kwmust_new();
   RE_NODE *right;
   RE_NODE *left;
 
@@ -247,10 +247,139 @@ kwmust *re_kwmust(RE_NODE *node, kwmust *k)
   switch (node->type)
   {
   case RE_NODE_LITERAL:
-    k->left = k->right = k->is = node->value;
-    kw_insert(&(k->in), k->value);
+  {
+    char *l = malloc(sizeof(char) * 2);
+    l[0] = node->value;
+    l[1] = 0;
+    k->left = k->right = k->is = l;
+    k->in = kwlist_new();
+    kwlist_insert(k->in, l);
+    break;
   }
-}*/
+  case RE_NODE_CONCAT:
+  {
+    kwmust *kleft = re_kwmust(left);
+    kwmust *kright = re_kwmust(right);
+
+    // left
+    if (kleft->is != NULL)
+    {
+      char *cat = malloc((strlen(kleft->is) + strlen(kright->left)) * sizeof(char));
+      strcpy(cat, kleft->is);
+      k->left = strcat(cat, kright->left);
+    }
+    else
+    {
+      k->left = kleft->left;
+    }
+
+    // right
+    if (kright->is != NULL)
+    {
+      char *cat = malloc((strlen(kleft->right) + strlen(kright->is)) * sizeof(char));
+      strcpy(cat, kleft->right);
+      k->right = strcat(cat, kright->is);
+    }
+    else
+    {
+      k->right = kright->right;
+    }
+
+    // is
+    if (kright->is != NULL && kleft->is != NULL)
+    {
+      char *cat = malloc((strlen(kleft->is) + strlen(kright->is)) * sizeof(char));
+      strcpy(cat, kleft->is);
+      k->is = strcat(cat, kright->is);
+    }
+    else
+    {
+      k->is = NULL;
+    }
+
+    // in
+    k->in = kwlist_merge(kleft->in, kright->in);
+    char *cat = malloc((strlen(kleft->right) + strlen(kright->left)) * sizeof(char));
+    strcpy(cat, kleft->right);
+    kwlist_insert(k->in, strcat(cat, kright->left));
+    break;
+  }
+  case RE_NODE_ALT:
+  {
+
+    kwmust *kleft = re_kwmust(left);
+    kwmust *kright = re_kwmust(right);
+
+    int partstrlen = fmin(strlen(kleft->left), strlen(kright->left));
+
+    // left
+    char *l = malloc(partstrlen * sizeof(char));
+    memset(l, 0, partstrlen);
+    for (int i = 0; i < partstrlen; i++)
+    {
+      if (kleft->left[i] == kright->left[i])
+        l[i] = kleft->left[i];
+      else
+        break;
+    }
+    k->left = l;
+
+    partstrlen = fmin(strlen(kleft->right), strlen(kright->right));
+
+    // right
+    char *r = malloc(partstrlen * sizeof(char));
+    memset(r, 0, partstrlen);
+    int lr = strlen(kleft->right);
+    int rr = strlen(kright->right);
+    for (int i = 0; i < partstrlen; i++)
+    {
+      if (kleft->right[lr - 1 - i] == kright->right[rr - 1 - i])
+        r[partstrlen - 1 - i] = kleft->right[rr - 1 - i];
+      else
+        break;
+    }
+    k->right = r;
+
+    // is
+    if (kleft->is != NULL && kright->is != NULL)
+    {
+      if (strcmp(kleft->is, kright->is) == 0)
+      {
+        k->is = kleft->is;
+      }
+    }
+
+    // in
+    k->in = kwlist_merge(kleft->in, kright->in);
+    break;
+  }
+  case RE_NODE_RANGE:
+    if (node->start == 0)
+      k = kwmust_new();
+    else
+      k = re_kwmust(left);
+  case RE_NODE_STAR:
+    k = kwmust_new();
+    break;
+  case RE_NODE_PLUS:
+    k = re_kwmust(left);
+    break;
+  case RE_NODE_CLASS:
+  {
+    k = kwmust_new();
+    for (int i = 0; i < 256; i++)
+    {
+      if (CHAR_IN_CLASS(node->re_class->bitmap, i) != 0)
+      {
+        char l[2] = {(char)i, 0};
+        kwlist_insert(k->in, &l);
+      }
+    }
+    break;
+  }
+  }
+  return k;
+}
 
 // return minimam regex length
 uint32_t re_len(RE_NODE *node)
@@ -937,10 +1066,10 @@ int yr_parser_reduce_string_declaration(
 
     if (*string != NULL)
     {
-      //calc minimam length
+      // calc minimam length
       (*string)->re_length = re_len(re_ast->root_node);
 
-      // print alph_set
+      // get alph_set
       if ((*string)->re_alphabet == NULL)
       {
         (*string)->re_alphabet = (RE_CLASS *)yr_malloc(sizeof(RE_CLASS));
@@ -948,6 +1077,8 @@ int yr_parser_reduce_string_declaration(
         re_alph(re_ast->root_node, (*string)->re_alphabet->bitmap);
       }
     }
+
+    kwmust *k = re_kwmust(re_ast->root_node);
 
     if (remainder_re_ast != NULL)
     {
