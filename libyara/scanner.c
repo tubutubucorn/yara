@@ -40,6 +40,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "exception.h"
 
+/*QR 関数　、*/
+
+void preQsBc(char *x, int m, int qsBc[]) {
+  int i;
+  for (i = 0; i < 256; ++i) qsBc[i] = m + 1;
+  for (i = 0; i < m; ++i)   qsBc[(unsigned char)x[i]] = m - i;
+}
+
+int  QS(char *x, int m, char *y, int n) {
+  int j=0, qsBc[256];
+  preQsBc(x, m, qsBc);
+  while (j <= n - m) {
+    if (memcmp(x, y + j, m) == 0) return 1;
+    else j += qsBc[(unsigned char)y[j + m]];
+  }
+  return 0;
+}
 
 static int _yr_scanner_scan_mem_block(
     YR_SCANNER* scanner,
@@ -53,31 +70,42 @@ static int _yr_scanner_scan_mem_block(
   YR_AC_MATCH* match;
   YR_AC_TRANSITION transition;
 
-  size_t i = 0;
+  size_t i = 0, j=0;
   uint32_t state = YR_AC_ROOT_STATE;
   uint16_t index;
 
   // rlength=正規表現の長さ, rclass=正規表現の集合の元(bitmap)
-  uint32_t rlength = scanner->rules->rules_list_head->strings->re_length;
-  RE_CLASS *rclass = scanner->rules->rules_list_head->strings->re_alphabet;
+  //uint32_t rlength = rules->rules_list_head->strings->re_length;
+  //RE_CLASS *rclass = rules->rules_list_head->strings->re_alphabet;
 
   // test code
-  /*uint32_t rlength = 3;
+  uint32_t rlength = 3;
   RE_CLASS rclass_;
   RE_CLASS *rclass = &rclass_;
 
-  for(j=0;j<=31;j++){
-    if(j==12){
+  for(j = 0; j<=31; j++){
+    if(j == 12){
       rclass->bitmap[j] = 0x1e;
     }else{
       rclass->bitmap[j] = 0x00;
     }
-  }*/
-  while (i+rlength < block->size){
-    if(CHAR_IN_CLASS(rclass->bitmap,block_data[i+rlength-1])){
-      break;
+  }
+
+  if(rules->rules_list_head->strings->keyword != NULL){
+    if(!(QS(rules->rules_list_head->strings->keyword,
+      strlen(rules->rules_list_head->strings->keyword),
+      block_data, block->size
+      ))){
+        i = block->size;
+      }
+  }
+  else{
+    while (i+rlength < block->size){
+      if(CHAR_IN_CLASS(rclass->bitmap,block_data[i+rlength-1])){
+        break;
+      }
+      i+=rlength;
     }
-    i+=rlength;
   }
 
   while (i < block->size)
