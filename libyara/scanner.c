@@ -88,6 +88,7 @@ static int _yr_scanner_scan_mem_block(
   uint32_t rlength = rules->rules_list_head->strings->re_length;
   RE_CLASS *rclass = rules->rules_list_head->strings->re_alphabet;
 
+
   if (rules->rules_list_head->strings->keyword != NULL)
   {
     if (!(QS(rules->rules_list_head->strings->keyword,
@@ -99,9 +100,15 @@ static int _yr_scanner_scan_mem_block(
   }
   else
   {
+    int table[256];
+    for(int c=0;c<255;c++){
+      table[c] = CHAR_IN_CLASS(rclass->bitmap, c);
+    }
+  
     while (i + rlength < block->size)
     {
-      if (CHAR_IN_CLASS(rclass->bitmap, block_data[i + rlength - 1]))
+      //if (CHAR_IN_CLASS(rclass->bitmap, block_data[i + rlength - 1]))
+      if(table[block_data[i+rlength-1]])
       {
         break;
       }
