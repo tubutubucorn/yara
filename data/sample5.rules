@@ -5,7 +5,7 @@ rule UPX : Packer
 	acf = " hoge"
 
     strings:
-	$re3 ={ 68 FF FF 7F 00 5? }
+	$re3 =/[ab]{10}[cd]*[ef]/
 
     condition:
     $re3
