@@ -5,6 +5,11 @@
 
 
 
+## seccamp2018 Z3
+セキュリティ・キャンプZ3で高速化を実装しました
+
+
+
 ## YARA in a nutshell
 
 YARA is a tool aimed at (but not limited to) helping malware researchers to
