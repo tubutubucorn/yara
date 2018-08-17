@@ -1,0 +1,7 @@
+rule HEX
+{
+	strings:
+		$re1 = {??}
+	condition:
+		$re1
+}

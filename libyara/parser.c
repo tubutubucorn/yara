@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #define todigit(x) ((x) >= 'A' && (x) <= 'F') ? ((uint8_t)(x - 'A' + 10)) : ((uint8_t)(x - '0'))
 
-#define KWLEN 32
+#define KWLEN 256
 typedef struct kwlist
 {
   char *list[KWLEN];
@@ -256,6 +256,25 @@ kwmust *re_kwmust(RE_NODE *node)
     kwlist_insert(k->in, l);
     break;
   }
+  case RE_NODE_MASKED_LITERAL:
+    k = kwmust_new();
+    for (int i = 0; i < 256; i++)
+    {
+      if ((i & node->mask) == node->value)
+      {
+        char l[2] = {(char)i, 0};
+        kwlist_insert(k->in, &l);
+      }
+    }
+    break;
+  case RE_NODE_ANY:
+    k = kwmust_new();
+    for (int i = 0; i < 256; i++)
+    {
+      char l[2] = {(char)i, 0};
+      kwlist_insert(k->in, &l);
+    }
+    break;
   case RE_NODE_CONCAT:
   {
     kwmust *kleft = re_kwmust(left);
