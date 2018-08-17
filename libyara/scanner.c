@@ -87,10 +87,11 @@ static int _yr_scanner_scan_mem_block(
   // rlength=正規表現の長さ, rclass=正規表現の集合の元(bitmap)
   uint32_t rlength = rules->rules_list_head->strings->re_length;
   RE_CLASS *rclass = rules->rules_list_head->strings->re_alphabet;
-/*
+
   int table[256];
   //int counta = 0;
-  for(int c=0; c<255; c++){
+  for (int c = 0; c < 255; c++)
+  {
     table[c] = CHAR_IN_CLASS(rclass->bitmap, c);
     //if(table[c]) counta++;
   }
@@ -102,7 +103,7 @@ static int _yr_scanner_scan_mem_block(
     {
       i = block->size;
     }
-  }*/
+  }
 
   while (i < block->size)
   {
@@ -130,18 +131,18 @@ static int _yr_scanner_scan_mem_block(
       match = match->next;
     }
 
-    /*if(rlength >= 1)
+    if(rlength >= 1)
     {
       while (i + rlength < block->size)
       {
-        if(table[block_data[i+rlength-1]])
+        if (table[block_data[i + rlength - 1]])
         {
           break;
         }
         i += rlength;
       }
     }
-*/
+
     index = block_data[i++] + 1;
     transition = transition_table[state + index];
 
