@@ -1101,9 +1101,27 @@ int yr_parser_reduce_string_declaration(
         memset((*string)->re_alphabet->bitmap, 0, 32);
         re_alph(re_ast->root_node, (*string)->re_alphabet->bitmap);
       }
-    }
 
-    kwmust *k = re_kwmust(re_ast->root_node);
+      kwmust *k = re_kwmust(re_ast->root_node);
+
+      // 最長のキーワードを求める
+      char *maxstr = NULL;
+      for (int i = 0; i < 256; i++)
+      {
+        if (k->in->list[i] != NULL)
+        {
+          if (maxstr == NULL || strlen(maxstr) < strlen(k->in->list[i]))
+          {
+            maxstr = k->in->list[i];
+          }
+        }
+      }
+      if (maxstr != NULL)
+      {
+        (*string)->keyword = malloc(strlen(maxstr) * sizeof(char));
+        memcpy((*string)->keyword, maxstr, strlen(maxstr) * sizeof(char));
+      }
+    }
 
     if (remainder_re_ast != NULL)
     {

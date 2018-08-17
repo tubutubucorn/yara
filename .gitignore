@@ -51,6 +51,9 @@ stamp-h1
 /ylwrap
 /m4
 !/m4/acx_pthread.m4
+configure
+Makefile
+
 
 # Project specific files
 /yara
