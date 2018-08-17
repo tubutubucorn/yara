@@ -115,3 +115,5 @@ x64/
 windows/*/packages/
 *.trs
 *.log
+
+INSTALL*

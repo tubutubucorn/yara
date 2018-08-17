@@ -1,0 +1,13 @@
+
+rule UPX : Packer
+{
+    meta:
+	acf = " hoge"
+
+    strings:
+	$re3 ={ 68 FF FF 7F 00 5? }
+
+    condition:
+    $re3
+}
+

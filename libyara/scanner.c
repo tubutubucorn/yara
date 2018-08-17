@@ -88,7 +88,7 @@ static int _yr_scanner_scan_mem_block(
   uint32_t rlength = rules->rules_list_head->strings->re_length;
   RE_CLASS *rclass = rules->rules_list_head->strings->re_alphabet;
 
-
+/*
   if (rules->rules_list_head->strings->keyword != NULL)
   {
     if (!(QS(rules->rules_list_head->strings->keyword,
@@ -101,9 +101,12 @@ static int _yr_scanner_scan_mem_block(
   else if(rlength >= 1)
   {
     int table[256];
+    //int counta = 0;
     for(int c=0; c<255; c++){
       table[c] = CHAR_IN_CLASS(rclass->bitmap, c);
+      //if(table[c]) counta++;
     }
+    //printf("stand bit num > %d",counta);
   
     while (i + rlength < block->size)
     {
@@ -114,6 +117,15 @@ static int _yr_scanner_scan_mem_block(
       i += rlength;
     }
   }
+*/
+  int table[256];
+  //int counta = 0;
+  for(int c=0; c<255; c++){
+    table[c] = CHAR_IN_CLASS(rclass->bitmap, c);
+    //if(table[c]) counta++;
+  }
+  //printf("stand bit num > %d",counta);
+  char *keyword = rules->rules_list_head->strings->keyword ;
 
   while (i < block->size)
   {
@@ -139,6 +151,24 @@ static int _yr_scanner_scan_mem_block(
       }
 
       match = match->next;
+    }
+
+    if (keyword != NULL)
+    {
+      if (!(QS(keyword, strlen(keyword), block_data, block->size)))
+      {
+        i = block->size;
+      }
+    }else if(rlength >= 1)
+    {
+      while (i + rlength < block->size)
+      {
+        if(table[block_data[i+rlength-1]])
+        {
+          break;
+        }
+        i += rlength;
+      }
     }
 
     index = block_data[i++] + 1;
