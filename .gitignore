@@ -117,3 +117,6 @@ windows/*/packages/
 *.log
 
 INSTALL*
+data/10000000000b.txt
+data/1000000000b.txt
+data/test.txt
