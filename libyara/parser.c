@@ -47,9 +47,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define CHAR_IN_CLASS(cls, chr) \
   ((cls)[(chr) / 8] & 1 << ((chr) % 8))
 
-#define todigit(x) ((x) >= 'A' && (x) <= 'F') ? ((uint8_t)(x - 'A' + 10)) : ((uint8_t)(x - '0'))
+#define todigit(x) \
+  ((x) >= 'A' && (x) <= 'F') ? ((uint8_t)(x - 'A' + 10)) : ((uint8_t)(x - '0'))
 
 #define KWLEN 256
+
 typedef struct kwlist
 {
   char *list[KWLEN];
@@ -96,6 +98,7 @@ void kwlist_delete(kwlist *k)
 static void _kwlist_insert(kwlist *k, char *str, int len)
 {
   int nullindex = -1;
+  int ilen;
 
   for (int i = 0; i < KWLEN; i++)
   {
@@ -105,7 +108,7 @@ static void _kwlist_insert(kwlist *k, char *str, int len)
       continue;
     }
 
-    int ilen = strlen(k->list[i]);
+    ilen = strlen(k->list[i]);
     // `str`が`k->list[i]`の部分文字列だった場合は追加する必要がないので`return`。
     if (memmem(k->list[i], ilen, str, len) != NULL)
       return;
@@ -145,18 +148,20 @@ int kwlist_in(kwlist *k, char *str)
 void kwlist_trim(kwlist *k)
 {
   int delindex[KWLEN];
+  int ilen, jlen;
+
   for (int i = 0; i < KWLEN; i++)
     delindex[i] = 0;
   for (int i = 0; i < KWLEN; i++)
   {
     if (k->list[i] == NULL)
       continue;
-    int ilen = strlen(k->list[i]);
+    ilen = strlen(k->list[i]);
     for (int j = i; j < KWLEN; j++)
     {
       if (k->list[j] == NULL)
         continue;
-      int jlen = strlen(k->list[j]);
+      jlen = strlen(k->list[j]);
       if (ilen < jlen)
       {
         for (int l = 0; ilen + l <= jlen; l++)
@@ -194,6 +199,8 @@ void kwlist_trim(kwlist *k)
 kwlist *kwlist_merge(kwlist *k1, kwlist *k2)
 {
   kwlist *result = kwlist_new();
+  char *astr, *bstr, *cstr;
+  int alen, blen, clen;
 
   for (int i = 0; i < KWLEN; i++)
   {
@@ -204,19 +211,19 @@ kwlist *kwlist_merge(kwlist *k1, kwlist *k2)
       if (k2->list[j] == NULL)
         continue;
 
-      char *astr = k1->list[i];
-      char *bstr = k2->list[j];
-      int alen = strlen(astr);
-      int blen = strlen(bstr);
+      astr = k1->list[i];
+      bstr = k2->list[j];
+      alen = strlen(astr);
+      blen = strlen(bstr);
 
       if (alen > blen)
       {
-        char *cstr = astr;
-        int clen = alen;
+        cstr = astr;
+        clen = alen;
         astr = bstr;
         alen = blen;
         bstr = cstr;
-        clen = clen;
+        blen = clen;
       }
 
       for (int l = alen; l > 0; l--)
@@ -238,32 +245,28 @@ kwlist *kwlist_merge(kwlist *k1, kwlist *k2)
 kwmust *re_kwmust(RE_NODE *node)
 {
   kwmust *k = kwmust_new();
-  RE_NODE *right;
-  RE_NODE *left;
-
-  right = node->right;
-  left = node->left;
+  RE_NODE *right = node->right;
+  RE_NODE *left = node->left;
+  char l[2];
 
   switch (node->type)
   {
   case RE_NODE_LITERAL:
-  {
-    char *l = malloc(sizeof(char) * 2);
+    //char *l = malloc(sizeof(char) * 2);
     l[0] = node->value;
     l[1] = 0;
     k->left = k->right = k->is = l;
     k->in = kwlist_new();
     kwlist_insert(k->in, l);
     break;
-  }
   case RE_NODE_MASKED_LITERAL:
-    k = kwmust_new();
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if ((i & node->mask) == node->value)
       {
-        char l[2] = {(char)i, 0};
-        kwlist_insert(k->in, &l);
+        l[0] = (char)i;
+        l[1] = 0;
+        kwlist_insert(k->in, l);
       }
     }
     break;
@@ -271,8 +274,9 @@ kwmust *re_kwmust(RE_NODE *node)
     k = kwmust_new();
     for (int i = 0; i < 256; i++)
     {
-      char l[2] = {(char)i, 0};
-      kwlist_insert(k->in, &l);
+      l[0] = (char)i;
+      l[1] = 0;
+      kwlist_insert(k->in, l);
     }
     break;
   case RE_NODE_CONCAT:
@@ -331,39 +335,37 @@ kwmust *re_kwmust(RE_NODE *node)
   }
   case RE_NODE_ALT:
   {
-
     kwmust *kleft = re_kwmust(left);
     kwmust *kright = re_kwmust(right);
-
     int partstrlen = fmin(strlen(kleft->left), strlen(kright->left));
 
     // left
-    char *l = malloc(partstrlen * sizeof(char));
-    memset(l, 0, partstrlen);
+    char *l_ = malloc(partstrlen * sizeof(char));
+    memset(l_, 0, partstrlen);
     for (int i = 0; i < partstrlen; i++)
     {
       if (kleft->left[i] == kright->left[i])
-        l[i] = kleft->left[i];
+        l_[i] = kleft->left[i];
       else
         break;
     }
-    k->left = l;
+    k->left = l_;
 
     partstrlen = fmin(strlen(kleft->right), strlen(kright->right));
 
     // right
-    char *r = malloc(partstrlen * sizeof(char));
-    memset(r, 0, partstrlen);
+    char *r_ = malloc(partstrlen * sizeof(char));
+    memset(r_, 0, partstrlen);
     int lr = strlen(kleft->right);
     int rr = strlen(kright->right);
     for (int i = 0; i < partstrlen; i++)
     {
       if (kleft->right[lr - 1 - i] == kright->right[rr - 1 - i])
-        r[partstrlen - 1 - i] = kleft->right[rr - 1 - i];
+        r_[partstrlen - 1 - i] = kleft->right[rr - 1 - i];
       else
         break;
     }
-    k->right = r;
+    k->right = r_;
 
     // is
     if (kleft->is != NULL && kright->is != NULL)
@@ -383,6 +385,7 @@ kwmust *re_kwmust(RE_NODE *node)
       k = kwmust_new();
     else
       k = re_kwmust(left);
+    break;
   case RE_NODE_STAR:
     k = kwmust_new();
     break;
@@ -390,18 +393,17 @@ kwmust *re_kwmust(RE_NODE *node)
     k = re_kwmust(left);
     break;
   case RE_NODE_CLASS:
-  {
     k = kwmust_new();
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
-      if (CHAR_IN_CLASS(node->re_class->bitmap, i) != 0)
+      if (CHAR_IN_CLASS(node->re_class->bitmap, i))
       {
-        char l[2] = {(char)i, 0};
-        kwlist_insert(k->in, &l);
+        l[0] = (char)i;
+        l[1] = 0;
+        kwlist_insert(k->in, l);
       }
     }
     break;
-  }
   }
   return k;
 }
@@ -409,11 +411,10 @@ kwmust *re_kwmust(RE_NODE *node)
 // return minimam regex length
 uint32_t re_len(RE_NODE *node)
 {
-  RE_NODE *right;
-  RE_NODE *left;
-
-  right = node->right;
-  left = node->left;
+  RE_NODE *right = node->right;;
+  RE_NODE *left = node->left;
+  //right = node->right;
+  //left = node->left;
 
   switch (node->type)
   {
@@ -455,22 +456,21 @@ uint32_t re_len(RE_NODE *node)
   }
 }
 
-void *re_alph(RE_NODE *node, uint8_t *bitmap)
+void re_alph(RE_NODE *node, uint8_t *bitmap)
 {
-  RE_NODE *right;
-  RE_NODE *left;
-
-  right = node->right;
-  left = node->left;
+  RE_NODE *right = node->right;
+  RE_NODE *left = node->left;
+  //right = node->right;
+  //left = node->left;
+  uint8_t negated;
 
   switch (node->type)
-  {
-    uint8_t negated;
+  {  
   case RE_NODE_LITERAL:
     bitmap[node->value / 8] |= 1 << (node->value % 8);
     break;
   case RE_NODE_MASKED_LITERAL:
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if ((i & node->mask) == node->value)
       {
@@ -503,7 +503,7 @@ void *re_alph(RE_NODE *node, uint8_t *bitmap)
     }
     break;
   case RE_NODE_WORD_CHAR:
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if (isalnum(i) != 0)
       {
@@ -512,22 +512,23 @@ void *re_alph(RE_NODE *node, uint8_t *bitmap)
     }
     break;
   case RE_NODE_NON_WORD_CHAR:
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if (isalnum(i) == 0)
       {
         bitmap[i / 8] |= 1 << (i % 8);
       }
     }
+    break;
   case RE_NODE_DIGIT:
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if (isdigit(i) != 0)
         bitmap[i / 8] |= 1 << (i % 8);
     }
     break;
   case RE_NODE_NON_DIGIT:
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < KWLEN; i++)
     {
       if (isdigit(i) == 0)
         bitmap[i / 8] |= 1 << (i % 8);
@@ -536,6 +537,7 @@ void *re_alph(RE_NODE *node, uint8_t *bitmap)
   default:
     break;
   }
+  return;
 }
 
 int yr_parser_emit(
@@ -1106,7 +1108,7 @@ int yr_parser_reduce_string_declaration(
 
       // 最長のキーワードを求める
       char *maxstr = NULL;
-      for (int i = 0; i < 256; i++)
+      for (int i = 0; i < KWLEN; i++)
       {
         if (k->in->list[i] != NULL)
         {
@@ -1121,8 +1123,10 @@ int yr_parser_reduce_string_declaration(
         (*string)->keyword = malloc(strlen(maxstr) * sizeof(char));
         memcpy((*string)->keyword, maxstr, strlen(maxstr) * sizeof(char));
       }
+      kwlist_delete(k->in);
+      free(k);
     }
-
+   
     if (remainder_re_ast != NULL)
     {
       (*string)->g_flags |= STRING_GFLAGS_CHAIN_TAIL | STRING_GFLAGS_CHAIN_PART;

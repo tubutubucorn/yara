@@ -44,14 +44,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   ((cls)[(chr) / 8] & 1 << ((chr) % 8))
 
 /*QR 関数　、*/
-
 void preQsBc(char *x, int m, int qsBc[])
 {
-  int i;
-  for (i = 0; i < 256; ++i)
+  for (int i = 0; i < 256; ++i)
     qsBc[i] = m + 1;
-  for (i = 0; i < m; ++i)
+  for (int i = 0; i < m; ++i)
     qsBc[(unsigned char)x[i]] = m - i;
+  return;
 }
 
 int QS(char *x, int m, char *y, int n)
@@ -76,7 +75,6 @@ static int _yr_scanner_scan_mem_block(
   YR_RULES *rules = scanner->rules;
   YR_AC_TRANSITION_TABLE transition_table = rules->ac_transition_table;
   YR_AC_MATCH_TABLE match_table = rules->ac_match_table;
-
   YR_AC_MATCH *match;
   YR_AC_TRANSITION transition;
 
@@ -99,7 +97,7 @@ static int _yr_scanner_scan_mem_block(
   char *keyword = rules->rules_list_head->strings->keyword ;
   if (keyword != NULL)
   {
-    if (!(QS(keyword, strlen(keyword), block_data, block->size)))
+    if (!(QS(keyword, strlen(keyword), (char *)block_data, block->size)))
     {
       i = block->size;
     }
@@ -131,6 +129,7 @@ static int _yr_scanner_scan_mem_block(
       match = match->next;
     }
 
+    // SKIP algorism
     if(rlength >= 1)
     {
       while (i + rlength < block->size)

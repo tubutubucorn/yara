@@ -9,10 +9,11 @@ rule UPX : Packer
     strings: 
 	$re1 = /^[ab](abc)+[ac]*.{10} (ab|hoge).\D$/
 	$re2 = {A2 A? ?? [2-4] A3 [0-5] 4A}
-	$re3 = /abbbb/
+	$re3 = /abbb/
+	$re4 = /hoge/
 
     condition:
-        $re3 or $re1 or $re2
+        $re4 or $re3 or $re1 or $re2
         
 }
 
